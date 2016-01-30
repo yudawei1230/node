@@ -1,0 +1,75 @@
+@media screen and (max-width: 330px) {
+  table {
+    font-size: 10px !important;
+    width: 100% !important; } }
+@media screen and (min-width: 331px) {
+  table {
+    font-size: 10px !important;
+    width: 100% !important; } }
+@media screen and (min-width: 361px) {
+  table {
+    font-size: 11px !important;
+    width: 90% !important; } }
+@media screen and (min-width: 380px) {
+  table {
+    font-size: 13px !important;
+    width: 90% !important; } }
+@media screen and (min-width: 500px) {
+  table {
+    font-size: 15px !important;
+    width: 80% !important; } }
+body .wait {
+  position: fixed;
+  font-size: 50px !important;
+  animation: mywait 0.8s infinite;
+  animation-timing-function: linear;
+  z-index: 1000; }
+body .container {
+  position: relative; }
+  body .container .back {
+    position: fixed;
+    left: 15px;
+    top: 10%;
+    opacity: 0.7;
+    z-index: 1000; }
+    body .container .back:hover {
+      opacity: 1; }
+  body .container .tomorrow {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    z-index: 1000; }
+  body .container .yesterday {
+    position: fixed;
+    bottom: 5%;
+    left: 5%;
+    z-index: 1000; }
+  body .container .charts {
+    position: relative; }
+    body .container .charts table {
+      font-size: 16px;
+      width: 80% !important;
+      height: 80% !important;
+      background: #FFF;
+      margin: 10px 0px;
+      margin-left: auto;
+      margin-right: auto;
+      border-collapse: collapse; }
+      body .container .charts table thead td, body .container .charts table thead th, body .container .charts table tbody td, body .container .charts table tbody th, body .container .charts table tfoot td, body .container .charts table tfoot th {
+        text-align: center;
+        vertical-align: middle;
+        border: solid 2px #DDD; }
+  body .container #frame {
+    position: fixed;
+    z-index: 1000; }
+
+@keyframes mywait {
+  from {
+    tansform: rotateZ(0deg); }
+  to {
+    transform: rotateZ(360deg); } }
+.btnTransition {
+  transition: 1s;
+  opacity: 0.2 !important; }
+
+/*# sourceMappingURL=chart.css.map */

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>报表工具</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="__TPL_PATH__/Main/css/bootstrap.min.css">
+		<link  href="__TPL_PATH__/Main/css/admin.css" type="text/css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="__TPL_PATH__/Main/css/admin.css">
+		<script type="text/javascript" src="__TPL_PATH__/js/jquery-1.10.2.min.js"></script>
+		{$other_script}
+	</head>
+	<body>
+		<div class="navbar navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="{:U('main/index')}" class="navbar-brand">人行指标填报</a>
+					<a href="{:U('main/index')}" class="navbar-brand">人行报表导出</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<span class="pull-right">当前登录用户：{$user['username']} [<a href="{:U('login/logout')}" >[退出]</a>]</span>
+					<span class="pull-right">[<a href="{:U('main/editpassword')}" >修改密码]&nbsp;&nbsp;</a></span>
+					<span class="pull-right">[<a href="{:U('main/reportset')}" >基本设置]&nbsp;&nbsp;</a></span>
+					
+				</div><!--/.navbar-collapse -->
+			</div>
+		</div>
+		<div id="container">
+			<div id="main-nav-bg"></div>

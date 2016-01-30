@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myapp">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" /> 
+<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="css/swiper-3.2.7.min.css">
+<link rel="stylesheet" href="css/chart.css" media="screen">
+<script src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script src="js/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script src="js/swiper-3.2.7.jquery.min.js"></script>
+<script src="socket.io.js"></script>
+<script type="text/javascript" src="js/chart.js" charset="UTF-8"></script>
+</head>
+<body ng-controller="Chart" ng-style="bodyPage">
+  <div data-role="header" data-position="fixed" ng-hide="nav" id="header">
+    <h1>高科生产日报表</h1>
+  </div>
+  <div class="ui-content" ng-hide="nav">
+    <form method="post" action="demoform.php">
+      <div class="ui-field-contain">
+            <label for="years">选择年份</label>
+            <select name="years" id="years"id="year_select" class="form-control" ng-model="year" ng-change="changeYear(year)" ng-options="year.years as year.years for year in years" >
+            <option>{{yearSelect}}</option>
+            </select>
+            <label for="months">选择月份</label>
+            <select name="months" id="months" id="month_select" class="form-control" ng-model="month" ng-change="changeMonth(month)" ng-options="month.months as month.months for month in months">
+            <option>{{monthSelect}}</option>
+            </select>
+            <label for="days">选择日期</label>
+            <select name="days" id="days" id="date-select" class="form-control" ng-model = "day" ng-change="changeDay(day)" ng-options="day.days as day.days for day in days" >
+            <option>{{daySelect}}</option>
+            </select>
+      </div>
+      <input id="selectDate"type="button" data-inline="true" value="提交" ng-click="show()">
+    </form>
+  </div>
+  <img src="images/process.png" class="wait"  ng-style="mywait"></img>  
+<div class="swiper-container container" >
+    <a ng-click="back()" ng-hide="form" class="ui-btn ui-icon-back ui-btn-icon-left ui-btn-icon-notext ui-corner-all ui-shadow back">后退</a>  
+    <a ng-click="yesterday()" id="lastDay" id="yesterday" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-notext yesterday">前一天</a>
+    <a ng-click="tomorrow()"  id="nextDay" id="tomorrow" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-r ui-btn-icon-notext tomorrow">后一天</a>
+    <a ng-click="lastMonth()" id="lastMon" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-notext yesterday">上月</a>
+    <a ng-click="nextMonth()" id="nextMon" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-r ui-btn-icon-notext tomorrow">下月</a>
+    <div class="swiper-wrapper" ng-hide="form" >
+        <div class="charts swiper-slide swiper-slide1" >
+    	    <table>
+		    <thead>
+			    <tr >
+				    <th colspan="12" ng-bind="title"></th>
+			    </tr>
+			    <tr>
+				    <th colspan="12" ng-bind="unit"></th>
+			    </tr>
+			    <tr>
+				    <th colspan="4">&nbsp;</th>
+				    <th colspan="5">单耗(kg/t)</th>
+				    <th colspan="3" rowspan="3">备注</th>
+			    </tr>
+			    <tr>
+				    <th rowspan="2">产品型号</th>
+				    <th rowspan="2">班次</th>
+				    <th colspan="2">产量</th>
+				    <th>硫酸</th>
+				    <th>保险粉</th>
+				    <th>六偏</th>
+				    <th>DC</th>
+				    <th>液碱</th>
+			    </tr>
+			    <tr>
+				    <th>计划</th>
+				    <th>实际</th>
+				    <th colspan="5">实际</th>
+			    </tr>
+		    </thead>
+            <tbody>
+                <tr>
+				    <td colspan="2">干粉合计</td>
+				    <td ng-bind="GFSum |number:2"></td>
+				    <td ng-bind="GFProductOutput|number:2"></td>
+                    <td ng-bind="GFLsCost|number:2"></td>
+				    <td ng-bind="GFBxfCost|number:2"></td>
+				    <td ng-bind="GFLpCost|number:2"></td>
+				    <td ng-bind="GFDcCost|number:2"></td>
+				    <td ng-bind="GFYjCost|number:2"></td>
+				    <td ng-bind="GfSumBeizhu|number:2"></td>
+			    </tr>
+			    <tr>
+				    <td colspan="2">瓷土合计</td>
+				    <td ng-bind="CtSum|number:2"></td>
+				    <td ng-bind="CtProductOutput|number:2"></td>
+				    <td ng-bind="CtLsCost|number:2"></td>
+				    <td ng-bind="CtBxfCost|number:2"></td>
+				    <td ng-bind="CtLpCost|number:2"></td>
+				    <td ng-bind="CtDcCost|number:2"></td>
+				    <td ng-bind="CtYjCost|number:2"></td>
+				    <td ng-bind="CtSumBeizhu|number:2"></td>
+			    </tr>
+			    <tr>
+				    <td colspan="2">无漂土合计</td>
+				    <td ng-bind="WptSum|number:2"></td>
+				    <td ng-bind="WptProductOutput|number:2"></td>
+				    <td ng-bind="WptLsCost|number:2"></td>
+				    <td ng-bind="WptBxfCost|number:2"></td>
+				    <td ng-bind="WptLpCost|number:2"></td>
+				    <td ng-bind="WptDcCost|number:2"></td>
+				    <td ng-bind="WptYjCost|number:2"></td>
+				    <td ng-bind="WptSumBeizhu|number:2"></td>
+			    </tr>
+			    <tr>
+				    <td colspan="2">干粉一合计</td>
+				    <td ng-bind="GfSum|number:2"></td>
+				    <td ng-bind="GfProductOutput|number:2"></td>
+				    <td ng-bind="GfLsCost|number:2"></td>
+				    <td ng-bind="GfBxfCost|number:2"></td>
+				    <td ng-bind="GfLpCost|number:2"></td>
+				    <td ng-bind="GfDcCost|number:2"></td>
+				    <td ng-bind="GfYjCost|number:2"></td>
+				    <td ng-bind="GfSumBeizhu|number:2"></td>
+			    </tr>
+            </tbody>
+		    <tbody ng-repeat="x in GfProduction">
+			    <tr>
+				    <td rowspan="3"  ng-bind="x.ProductID"></td>
+				    <td>零班</td>
+				    <td rowspan="3" ng-bind="x.PlanYield"></td>
+				    <td ng-bind="x.LRealYield"></td>
+				    <td ng-bind="x.LLS"></td>
+				    <td ng-bind="x.LBXF"></td>
+				    <td ng-bind="x.LLP"></td>
+				    <td ng-bind="x.LDC"></td>
+				    <td ng-bind="x.LYJ"></td>
+				    <td ng-bind="x.LBeizhu"></td>
+			    </tr>
+			    <tr>
+
+				    <td>白班</td>
+				    <td ng-bind="x.BRealYield"></td>
+				    <td ng-bind="x.BLS"></td>
+				    <td ng-bind="x.BBXF"></td>
+				    <td ng-bind="x.BLP"></td>
+				    <td ng-bind="x.BDC"></td>
+				    <td ng-bind="x.BYJ"></td>
+				    <td ng-bind="x.BBeizhu"></td>
+			    </tr>
+			    <tr>
+				    <td>中班</td>
+				    <td ng-bind="x.ZRealYield"></td>
+				    <td ng-bind="x.ZLS"></td>
+				    <td ng-bind="x.ZBXF"></td>
+				    <td ng-bind="x.ZLP"></td>
+				    <td ng-bind="x.ZDC"></td>
+				    <td ng-bind="x.ZYJ"></td>
+				    <td ng-bind="x.ZBeizhu"></td>
+			    </tr>
+		    </tbody>
+            <tbody>
+                <tr>
+                    <th colspan="2">干粉三合计</th>
+				    <th ng-bind="GftSum|number:2"></th>
+				    <th ng-bind="GftProductOutput|number:2"></th>
+				    <th ng-bind="GftLsCost|number:2"></th>
+				    <th ng-bind="GftBxfCost|number:2"></th>
+				    <th ng-bind="GftLpCost|number:2"></th>
+				    <th ng-bind="GftDcCost|number:2"></th>
+				    <th ng-bind="GftYjCost|number:2"></th>
+				    <th ng-bind="GftSumBeizhu|number:2"></th>
+                </tr>
+            </tbody>
+		    <tbody ng-repeat="x in GftProduction">
+			    <tr>
+				    <td rowspan="3"  ng-bind="x.ProductID"></td>
+				    <td>零班</td>
+				    <td rowspan="3" ng-bind="x.PlanYield"></td>
+				    <td ng-bind="x.LRealYield"></td>
+				    <td ng-bind="x.LLS"></td>
+				    <td ng-bind="x.LBXF"></td>
+				    <td ng-bind="x.LLP"></td>
+				    <td ng-bind="x.LDC"></td>
+				    <td ng-bind="x.LYJ"></td>
+				    <td ng-bind="x.LBeizhu"></td>
+			    </tr>
+			    <tr>
+
+				    <td>白班</td>
+				    <td ng-bind="x.BRealYield"></td>
+				    <td ng-bind="x.BLS"></td>
+				    <td ng-bind="x.BBXF"></td>
+				    <td ng-bind="x.BLP"></td>
+				    <td ng-bind="x.BDC"></td>
+				    <td ng-bind="x.BYJ"></td>
+				    <td ng-bind="x.BBeizhu"></td>
+			    </tr>
+			    <tr>
+				    <td>中班</td>
+				    <td ng-bind="x.ZRealYield"></td>
+				    <td ng-bind="x.ZLS"></td>
+				    <td ng-bind="x.ZBXF"></td>
+				    <td ng-bind="x.ZLP"></td>
+				    <td ng-bind="x.ZDC"></td>
+				    <td ng-bind="x.ZYJ"></td>
+				    <td ng-bind="x.ZBeizhu"></td>
+			    </tr>
+		    </tbody>
+		    <tbody>
+			    <tr>
+				    <td colspan="2">瓷土合计</td>
+				    <td ng-bind="CtSum|number:2"></td>
+				    <td ng-bind="CtProductOutput|number:2"></td>
+				    <td ng-bind="CtLsCost|number:2"></td>
+				    <td ng-bind="CtBxfCost|number:2"></td>
+				    <td ng-bind="CtLpCost|number:2"></td>
+				    <td ng-bind="CtDcCost|number:2"></td>
+				    <td ng-bind="CtYjCost|number:2"></td>
+				    <td ng-bind="CtSumBeizhu|number:2"></td>
+			    </tr>
+		    </tbody>
+            <tbody ng-repeat="x in CtProduction">
+			    <tr>
+				    <td rowspan="3"  ng-bind="x.ProductID"></td>
+				    <td>零班</td>
+				    <td rowspan="3" ng-bind="x.PlanYield"></td>
+				    <td ng-bind="x.LRealYield"></td>
+				    <td ng-bind="x.LLS"></td>
+				    <td ng-bind="x.LBXF"></td>
+				    <td ng-bind="x.LLP"></td>
+				    <td ng-bind="x.LDC"></td>
+				    <td ng-bind="x.LYJ"></td>
+				    <td ng-bind="x.LBeizhu"></td>
+			    </tr>
+			    <tr>
+
+				    <td>白班</td>
+				    <td ng-bind="x.BRealYield"></td>
+				    <td ng-bind="x.BLS"></td>
+				    <td ng-bind="x.BBXF"></td>
+				    <td ng-bind="x.BLP"></td>
+				    <td ng-bind="x.BDC"></td>
+				    <td ng-bind="x.BYJ"></td>
+				    <td ng-bind="x.BBeizhu"></td>
+			    </tr>
+			    <tr>
+				    <td>中班</td>
+				    <td ng-bind="x.ZRealYield"></td>
+				    <td ng-bind="x.ZLS"></td>
+				    <td ng-bind="x.ZBXF"></td>
+				    <td ng-bind="x.ZLP"></td>
+				    <td ng-bind="x.ZDC"></td>
+				    <td ng-bind="x.ZYJ"></td>
+				    <td ng-bind="x.ZBeizhu"></td>
+			    </tr>
+		    </tbody>
+		    <tbody>
+			    <tr>
+				    <td colspan="2">无漂土合计</td>
+				    <td ng-bind="WptSum|number:2"></td>
+				    <td ng-bind="WptProductOutput|number:2"></td>
+				    <td ng-bind="WptLsCost|number:2"></td>
+				    <td ng-bind="WptBxfCost|number:2"></td>
+				    <td ng-bind="WptLpCost|number:2"></td>
+				    <td ng-bind="WptDcCost|number:2"></td>
+				    <td ng-bind="WptYjCost|number:2"></td>
+				    <td ng-bind="WptSumBeizhu|number:2"></td>
+			    </tr>
+		    </tbody>
+	        <tbody ng-repeat="x in WptProduction">
+			    <tr>
+				    <td rowspan="3"  ng-bind="x.ProductID"></td>
+				    <td>零班</td>
+				    <td rowspan="3" ng-bind="x.PlanYield"></td>
+				    <td ng-bind="x.LRealYield"></td>
+				    <td ng-bind="x.LLS"></td>
+				    <td ng-bind="x.LBXF"></td>
+				    <td ng-bind="x.LLP"></td>
+				    <td ng-bind="x.LDC"></td>
+				    <td ng-bind="x.LYJ"></td>
+				    <td ng-bind="x.LBeizhu"></td>
+			    </tr>
+			    <tr>
+				    <td>白班</td>
+				    <td ng-bind="x.BRealYield"></td>
+				    <td ng-bind="x.BLS"></td>
+				    <td ng-bind="x.BBXF"></td>
+				    <td ng-bind="x.BLP"></td>
+				    <td ng-bind="x.BDC"></td>
+				    <td ng-bind="x.BYJ"></td>
+				    <td ng-bind="x.BBeizhu"></td>
+			    </tr>
+			    <tr>
+				    <td>中班</td>
+				    <td ng-bind="x.ZRealYield"></td>
+				    <td ng-bind="x.ZLS"></td>
+				    <td ng-bind="x.ZBXF"></td>
+				    <td ng-bind="x.ZLP"></td>
+				    <td ng-bind="x.ZDC"></td>
+				    <td ng-bind="x.ZYJ"></td>
+				    <td ng-bind="x.ZBeizhu"></td>
+			    </tr>
+            </tbody>
+	    </table>
+        </div>
+        <div class="swiper-slide swiper-slide2">
+                <label for="productDetails"></label>
+                <span id ="exam"></span>
+                <select  name="productDetails" id="productDetail_select" class="ui-btn-k" ng-model="productDetail" ng-change="changeproductDetail(productDetail)" ng-options="productDetail.productDetails as productDetail.productDetails for productDetail in productDetails"  data-mini="true">
+                <option>{{productSelect}}</option>
+                </select>
+                <div id="container" ng-hide="container"></div>
+         </div> 
+        <div class="swiper-slide swiper-slider3">
+            <div id="yearsComparation" ng-hide="container"></div>
+        </div> 
+    </div>
+    <div class="swiper-pagination" style="position:fixed"></div>
+</div>
+
+
+</body>
+</html>
+			
