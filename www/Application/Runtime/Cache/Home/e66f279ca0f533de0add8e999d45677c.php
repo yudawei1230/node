@@ -32,15 +32,16 @@
 <div id="main-nav">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<!-- <h3 class="panel-title">压缩文件列表</h3> -->
-			<form id="reportform" action="/index.php?s=/home/main/changereport"  method="get">
-				<select class="form-control" id="report" name="report">
-				  <option>资产负债表</option>
-				  <option>监管指标表</option>
-				  <option>利润表</option>
-				  <option>专项统计表</option>
-				</select>
-			</form>
+			<h3 class="panel-title">压缩文件列表</h3>
+		<form id="reportform" action="/index.php?s=/home/main/changereport"  method="get">
+			<select class="form-control" id="report" name="report">
+				<option value="ALL">全部</option>
+				<option value="ZCFZ">资产负债表</option>
+				<option value="JGZB">监管指标表</option>
+				<option value="LR">利润表</option>
+				<option value="ZXTJ">专项统计表</option>
+			</select>
+		</form>
 		</div>
 		<div class="panel-body">
 			<ul class="list-group">
@@ -53,6 +54,7 @@
 						</div>
 						<div class="form-group">
 							<select id="month" name="month">
+					    		<option <?php if('ALL' == $curr_month){echo 'selected';} ?> value="ALL" >全部</option>
 					    		<option <?php if(1 == $curr_month){echo 'selected';} ?> value="01" >01</option>
 								<option <?php if(2 == $curr_month){echo 'selected';} ?> value="02">02</option>
 								<option <?php if(3 == $curr_month){echo 'selected';} ?> value="03">03</option>
@@ -67,9 +69,8 @@
 								<option <?php if(12 == $curr_month){echo 'selected';} ?> value="12">12</option>
 					    	</select>
 						</div>
-						<button type="submit" class="btn btn-default btn-xs" id="search">搜索</button>
+<!-- 						<button type="submit" class="btn btn-default btn-xs" id="search">搜索</button> -->
 					</form>
-		
 			  	</li>
 				<?php if(is_array($report_list)): $i = 0; $__LIST__ = $report_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="list-group-item">
 						<a href="<?php echo U('main/download',array('id'=>$vo['id']));?>" class="badge" target="_blank">下载</a>
@@ -135,13 +136,26 @@ $(function(){
 	// 	var url = '<?php echo U("main/index");?>'+'?y='+year+'&m='+month;
 	// 	window.location.href=url;
 	// })
+
+
+	if(window.location.href.indexOf('&')>-1&&window.location.href.indexOf('report=')>-1)
+	{
+		$('#report').val(window.location.href.split('=')[2].split('&')[0]);
+		$('#month').val(window.location.href.split('=')[4]);
+	}
+	else
+	{
+		$('#report').val('ALL');
+		$('month').val('ALL')
+	}
 	$('#report').change(function(){
-		//$('#reportform').submit();
-		this.data={};
-		this.data['report'] = $('#report').val();
-		this.data['year']  = $('#year').val();
-		$('html').load('<?php echo U('main/changereport');?>',this.data,function(e){
-		});
+		window.location.href='http://10.2.2.14:900/index.php?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
+	});
+	$('#month').change(function(){
+		window.location.href='http://10.2.2.14:900/index.php?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
+	});
+	$('#year').change(function(){
+		window.location.href='http://10.2.2.14:900/index.php?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
 	});
 });
 </script>

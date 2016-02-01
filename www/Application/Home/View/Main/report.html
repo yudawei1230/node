@@ -175,6 +175,7 @@ $(function(){
 		data['month'] = $('#month1').val();
 		data['frequentness'] = $('#frequentness').val();
 		data['reportName'] = $('#reportName').text();
+		data['day'] = new Date($('#year1').val(),$('#month1').val(),0).getDate();
 		$.post('{:U('main/editreport')}',data,function(e){
 			if(e.err == 0){
 				if(e.exsitPf)

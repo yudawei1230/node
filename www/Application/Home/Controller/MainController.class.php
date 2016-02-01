@@ -17,12 +17,11 @@ class MainController extends FrontController {
         }else{
         	$map['year'] = $_GET['year'];
         	$map['month'] = $_GET['month'];
-
         	$report_db = D('Report');
         	$re = $report_db->getList($map,$this->user['id']);
 
         	$curr_year = intval(date('Y'));
-			$curr_month = date('m');
+			$curr_month = "ALL";
 			for($i=5;$i>0;$i--){
 			    if($i<0){break;}
 			    $year[]= $curr_year+$i;
@@ -271,6 +270,8 @@ class MainController extends FrontController {
     	unset($_POST['year']);
     	$month = $_POST['month'];
     	unset($_POST['month']);
+    	$days = $_POST['day'];
+    	unset($_POST['day']);
     	$zip_month = $month;
     	$reportName = $_POST['reportName'];
     	switch($reportName)
@@ -280,7 +281,7 @@ class MainController extends FrontController {
     		case "人行专项统计表": $reportName = 'ZXTJ'; break;
     		case "监管指标表": $reportName = 'JGZB'; break;
     	}
-    	if($month == '01'){
+/*    	if($month == '01'){
     		$days = '01';
     	}else{
     		$month = $month -1;
@@ -289,7 +290,7 @@ class MainController extends FrontController {
 
     		}
     		$days = date('t', strtotime('-1 month'));
-    	}
+    	}*/
     	$frequentness = $_POST['frequentness'];
     	unset($_POST['frequentness']);
     	foreach($_POST as $val){
@@ -312,7 +313,10 @@ class MainController extends FrontController {
 		$idx_con = implode('|', $user_set);
 		//dat
 		$dat_con = '';
+		$counts=1;
 		foreach($data as $val){
+			if($counts++==count($data))
+				break;
 			$dat_con .=$user_set[0].'|'.$val[0].'|'.$val[1]."\r\n";
 		}
 		$dat_con = trim($dat_con);
@@ -383,16 +387,44 @@ class MainController extends FrontController {
 
     }
     public function changereport(){
-    	$year = $_GET['year'];
+    	$years = $_GET['year'];
     	$report = $_GET['report'];
+    	$month = $_GET['month'];
 		$report_db = M('Report');
-		$tmp = $report_db ->where(array('u_id'=>$this->user['id'],'year'=>$year,'reportname'=>"ZXTJ"))->find();
+    	$curr_year = intval(date('Y'));
+		for($i=5;$i>0;$i--){
+		    if($i<0){break;}
+		    $year[]= $curr_year+$i;
+		}
+
+		$year[] = $curr_year;
+		for ($i=1; $i<=5; $i++) { 
+			$year[]= $curr_year-$i;
+		}
+		if($years == ''){
+			$this->assign('curr_year',$curr_year);				
+		}else{
+			$this->assign('curr_year',$years);				
+		}
+    	if($report!="ALL"&&$month!="ALL")
+		$tmp = $report_db ->where(array('u_id'=>$this->user['id'],'year'=>$years,'reportname'=>$report,'month'=>$month))->order('month')->select();
+		else if($month=="ALL"&&$report=="ALL")
+			$tmp = $report_db ->where(array('u_id'=>$this->user['id'],'year'=>$years))->order('month')->select();
+		else if($month=="ALL")
+			$tmp = $report_db ->where(array('u_id'=>$this->user['id'],'year'=>$years,'reportname'=>$report))->order('month')->select();
+		else
+			$tmp = $report_db ->where(array('u_id'=>$this->user['id'],'year'=>$years,'month'=>$month))->order('month')->select();
+		for($i=0;$i<count($tmp);$i++)
+			switch($tmp[$i]['reportname'])
+			{
+				case "JGZB": $tmp[$i]['reportname'] = "监管指标表"; break;
+				case "ZXTJ": $tmp[$i]['reportname'] = "专项统计表"; break;
+				case "LR": $tmp[$i]['reportname'] = "利润表"; break;
+				case "ZCFZ": $tmp[$i]['reportname'] = "资产负债表"; break;
+			}
 		$this->assign('year',$year);
-    	$this->assign('report_list',$re['data_list']);
-    	$this->assign('page',$re['page_list']);
+    	$this->assign('report_list',$tmp);
     	$this->display('main/user');
-    	//echo $report;
-    	//$this->display('');
     }
     public function download(){
     	$id = abs($_GET['id']);

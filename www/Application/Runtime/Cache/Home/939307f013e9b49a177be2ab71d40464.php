@@ -14,7 +14,8 @@
 		<div class="navbar navbar-inverse">
 			<div class="container">
 				<div class="navbar-header">
-					<a href="<?php echo U('main/index');?>" class="navbar-brand">报表工具</a>
+					<a href="<?php echo U('main/index');?>" class="navbar-brand">人行指标填报</a>
+					<a href="<?php echo U('main/index');?>" class="navbar-brand">人行报表导出</a>
 				</div>
 				<div class="navbar-collapse collapse">
 					<span class="pull-right">当前登录用户：<?php echo ($user['username']); ?> [<a href="<?php echo U('login/logout');?>" >[退出]</a>]</span>
@@ -197,6 +198,7 @@ $(function(){
 		data['month'] = $('#month1').val();
 		data['frequentness'] = $('#frequentness').val();
 		data['reportName'] = $('#reportName').text();
+		data['day'] = new Date($('#year1').val(),$('#month1').val(),0).getDate();
 		$.post('<?php echo U('main/editreport');?>',data,function(e){
 			if(e.err == 0){
 				if(e.exsitPf)
