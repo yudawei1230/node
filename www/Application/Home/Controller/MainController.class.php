@@ -43,12 +43,25 @@ class MainController extends FrontController {
 				$this->assign('curr_month',$map['month']);				
 			}
 			for($i=0;$i<count($re['data_list']);$i++)
-			switch($re['data_list'][$i]['reportname'])
 			{
-				case "JGZB": $re['data_list'][$i]['reportname'] = "监管指标表"; break;
-				case "ZXTJ": $re['data_list'][$i]['reportname'] = "专项统计表"; break;
-				case "LR": $re['data_list'][$i]['reportname'] = "利润表"; break;
-				case "ZCFZ": $re['data_list'][$i]['reportname'] = "资产负债表"; break;
+				if($re['data_list'][$i]['frequentness']==0)
+				{
+					if($re['data_list'][$i]['reportname']=="LR")
+					{
+						$re['data_list'][$i]['frequentness']="年报";
+						$re['data_list'][$i]['reportname'] = "利润表";
+						continue;
+					}
+					else
+						$re['data_list'][$i]['frequentness']="初始";
+				}
+				switch($re['data_list'][$i]['reportname'])
+				{
+					case "JGZB": $re['data_list'][$i]['reportname'] = "监管指标表";$re['data_list'][$i]['frequentness'] = $re['data_list'][$i]['frequentness']."季度"; break;
+					case "ZXTJ": $re['data_list'][$i]['reportname'] = "专项统计表";$re['data_list'][$i]['frequentness'] = $re['data_list'][$i]['frequentness']."季度"; break;
+					case "LR": $re['data_list'][$i]['reportname'] = "利润表"; $re['data_list'][$i]['frequentness'] = $re['data_list'][$i]['frequentness']."季度";break;
+					case "ZCFZ": $re['data_list'][$i]['reportname'] = "资产负债表";$re['data_list'][$i]['frequentness'] = $re['data_list'][$i]['frequentness']."月"; break;
+				}
 			}
 			//$this->assign('reportName',$re['data_list'][0]['reportname']);
 			$this->assign('year',$year);
@@ -130,15 +143,7 @@ class MainController extends FrontController {
     	$set = M('User_set')->where(array('u_id'=>$this->user['id']))->find();
     	$curr_year = intval(date('Y'));
 		$curr_month = date('m');
-		for($i=5;$i>0;$i--){
-		    if($i<0){break;}
-		    $year[]= $curr_year+$i;
-		}
 
-		$year[] = $curr_year;
-		for ($i=1; $i<=5; $i++) { 
-			$year[]= $curr_year-$i;
-		}
 		if($map['year'] == ''){
 			$this->assign('curr_year',$curr_year);				
 		}else{
@@ -151,14 +156,27 @@ class MainController extends FrontController {
 			$this->assign('curr_month',$map['month']);				
 		}
 		for($i=0;$i<count($re['data_list']);$i++)
+		{
+			if($re['data_list'][$i]['frequentness']==0)
+			{
+				if($re['data_list'][$i]['reportname']=="LR")
+				{
+					$re['data_list'][$i]['frequentness']="年报";
+					$re['data_list'][$i]['reportname'] = "利润表";
+					continue;
+				}
+				else
+					$re['data_list'][$i]['frequentness']="初始";
+			}
 			switch($re['data_list'][$i]['reportname'])
 			{
-				case "JGZB": $re['data_list'][$i]['reportname'] = "监管指标表"; break;
-				case "ZXTJ": $re['data_list'][$i]['reportname'] = "专项统计表"; break;
-				case "LR": $re['data_list'][$i]['reportname'] = "利润表"; break;
-				case "ZCFZ": $re['data_list'][$i]['reportname'] = "资产负债表"; break;
+				case "JGZB": $re['data_list'][$i]['reportname'] = "监管指标表";$re['data_list'][$i]['frequentness'] = $re['data_list'][$i]['frequentness']."季度"; break;
+				case "ZXTJ": $re['data_list'][$i]['reportname'] = "专项统计表";$re['data_list'][$i]['frequentness'] = $re['data_list'][$i]['frequentness']."季度"; break;
+				case "LR": $re['data_list'][$i]['reportname'] = "利润表"; $re['data_list'][$i]['frequentness'] = $re['data_list'][$i]['frequentness']."季度";break;
+				case "ZCFZ": $re['data_list'][$i]['reportname'] = "资产负债表";$re['data_list'][$i]['frequentness'] = $re['data_list'][$i]['frequentness']."月"; break;
 			}
-		$this->assign('year',$year);
+
+		}
     	$this->assign('report_list',$re['data_list']);
     	$this->assign('page',$re['page_list']);
 
@@ -206,6 +224,15 @@ class MainController extends FrontController {
 			$table_val[$row]['1'] = $sheet->getCell($datacol2.$row)->getValue();
 			$table_val[$row]['2'] = trim($sheet->getCell($datacol3.$row)->getValue());
 		}
+
+		switch($reportName)
+		{
+			case "监管指标表" : $frequent=[["初始",0],["第一季度",1],["第二季度",2],["第三季度",3],["第四季度",4]]; break;
+			case "人行资产负债表" : $frequent=[["初始",0],["1月",1],["2月",2],["3月",3],["4月",4],["5月",5],["6月",6],["7月",7],["8月",8],["9月",9],["10月",10],["11月",11],["12月",12]]; break;
+			case "人行专项统计表" : $frequent=[["初始",0],["第一季度",1],["第二季度",2],["第三季度",3],["第四季度",4]]; break;
+			case "人行利润表" : $frequent=[["年度",0],["第一季度",1],["第二季度",2],["第三季度",3],["第四季度",4]]; break;
+		}
+		$this->assign('frequent',$frequent);
 		//@unlink(realpath($file_path));
 		$this->assign('table_val',$table_val);	
 		$curr_year = intval(date('Y'));
@@ -272,6 +299,8 @@ class MainController extends FrontController {
     	unset($_POST['month']);
     	$days = $_POST['day'];
     	unset($_POST['day']);
+    	$frequent = ($_POST['frequent']);
+    	unset($_POST['frequent']);
     	$zip_month = $month;
     	$reportName = $_POST['reportName'];
     	switch($reportName)
@@ -332,11 +361,11 @@ class MainController extends FrontController {
 		24    顺序号（文件名的顺序码没有特别的含义，主要为区分多次报送而设置，也可以在数据修改阶段，用于对不同时间报送的数据进行区分）
 		*/
 		//头文件
-		$idx_filename = 'B'.'I'.$user_set[2].$user_set[3].$year.$month.$days.$frequentness.'1'.'1'.'.idx';
+		$idx_filename = 'B'.'I'.$user_set[2].$user_set[3].$year.$month.$days.$frequent.'1'.'1'.'.idx';
 		//数据文件
-		$dat_filename = 'B'.'J'.$user_set[2].$user_set[3].$year.$month.$days.$frequentness.'1'.'1'.'.dat';
+		$dat_filename = 'B'.'J'.$user_set[2].$user_set[3].$year.$month.$days.$frequent.'1'.'1'.'.dat';
 		//说明文件
-		$txt_filename = 'B'.'D'.$user_set[2].$user_set[3].$year.$month.$days.$frequentness.'1'.'1'.'.txt';
+		$txt_filename = 'B'.'D'.$user_set[2].$user_set[3].$year.$month.$days.$frequent.'1'.'1'.'.txt';
 
 
 
@@ -345,11 +374,11 @@ class MainController extends FrontController {
 		file_put_contents(TEMP_PATH.$txt_filename, '');
      	vendor('PclZip');
 
-     	$data['path'] = date('Y-m-d').'/'.$this->user['id'].'-'.$year.'-'.$month.'-'.$frequentness.$reportName.'.zip';
+     	$data['path'] = date('Y-m-d').'/'.$this->user['id'].'-'.$year.'-'.$month.'-'.$frequent.$reportName.'.zip';
      	$data['u_id'] = $this->user['id'];
      	$data['year'] = $year;
      	$data['month'] = $zip_month;
-     	$data['frequentness'] = $frequentness;
+     	$data['frequentness'] = $frequent;
      	$data['reportname'] = $reportName;
      	$data['updatetime'] = $this->timestamp;
 
@@ -365,9 +394,9 @@ class MainController extends FrontController {
 			),true);
 		}else{
 			$report_db = M('Report');
-			$tmp = $report_db ->where(array('u_id'=>$this->user['id'],'year'=>$year,'month'=>$zip_month,'frequentness'=>$frequentness,'reportname'=>$reportName))->find();
+			$tmp = $report_db ->where(array('u_id'=>$this->user['id'],'year'=>$year,'month'=>$zip_month,'frequentness'=>$frequent,'reportname'=>$reportName))->find();
 			if($tmp){
-				$a = $report_db ->where(array('u_id'=>$this->user['id'],'year'=>$year,'month'=>$zip_month,'frequentness'=>$frequentness,'reportname'=>$reportName))->data($data)->save();
+				$a = $report_db ->where(array('u_id'=>$this->user['id'],'year'=>$year,'month'=>$zip_month,'frequentness'=>$frequent,'reportname'=>$reportName))->data($data)->save();
 				$exsitPf = 1;
 			}else{
 				$a = M('Report')->data($data)->add();	
@@ -415,13 +444,34 @@ class MainController extends FrontController {
 		else
 			$tmp = $report_db ->where(array('u_id'=>$this->user['id'],'year'=>$years,'month'=>$month))->order('month')->select();
 		for($i=0;$i<count($tmp);$i++)
+		{
+/*			switch($tmp[$i]['reportname'])
+			{
+				case "JGZB": $tmp[$i]['reportname'] = "监管指标表";$tmp[$i]['frequentness'] += "季度"; break;
+				case "ZXTJ": $tmp[$i]['reportname'] = "专项统计表";$tmp[$i]['frequentness'] += "季度"; break;
+				case "LR": $tmp[$i]['reportname'] = "利润表";$tmp[$i]['frequentness'] += "季度";break;
+				case "ZCFZ": $tmp[$i]['reportname'] = "资产负债表";$tmp[$i]['frequentness'] += "月"; break;
+			}*/
+			if($tmp[$i]['frequentness']==0)
+			{
+				if($tmp[$i]['reportname']=="LR")
+				{
+					$tmp[$i]['frequentness']="年报";
+					$tmp[$i]['reportname'] = "利润表";
+					continue;
+				}
+				else
+					$tmp[$i]['frequentness']="初始";
+			}
 			switch($tmp[$i]['reportname'])
 			{
-				case "JGZB": $tmp[$i]['reportname'] = "监管指标表"; break;
-				case "ZXTJ": $tmp[$i]['reportname'] = "专项统计表"; break;
-				case "LR": $tmp[$i]['reportname'] = "利润表"; break;
-				case "ZCFZ": $tmp[$i]['reportname'] = "资产负债表"; break;
+				case "JGZB": $tmp[$i]['reportname'] = "监管指标表";$tmp[$i]['frequentness'] = $tmp[$i]['frequentness']."季度"; break;
+				case "ZXTJ": $tmp[$i]['reportname'] = "专项统计表";$tmp[$i]['frequentness'] = $tmp[$i]['frequentness']."季度"; break;
+				case "LR": $tmp[$i]['reportname'] = "利润表";$tmp[$i]['frequentness'] = $tmp[$i]['frequentness']."季度";break;
+				case "ZCFZ": $tmp[$i]['reportname'] = "资产负债表";$tmp[$i]['frequentness'] = $tmp[$i]['frequentness']."月"; break;
 			}
+		}
+
 		$this->assign('year',$year);
     	$this->assign('report_list',$tmp);
     	$this->display('main/user');

@@ -75,7 +75,7 @@
 				<?php if(is_array($report_list)): $i = 0; $__LIST__ = $report_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="list-group-item">
 						<a href="<?php echo U('main/download',array('id'=>$vo['id']));?>" class="badge" target="_blank">下载</a>
 				    	<a href="<?php echo U('main/reportdel',array('id'=>$vo['id']));?>" class="badge">删除</a>
-				    		<?php echo ($vo["year"]); ?>年<?php echo ($vo["month"]); ?>月<?php echo ($vo["frequentness"]); ?>频次<?php echo ($vo["reportname"]); ?>
+				    		<?php echo ($vo["year"]); ?>年<?php echo ($vo["month"]); ?>月<?php echo ($vo["reportname"]); ?>(<?php echo ($vo["frequentness"]); ?>)
 				  	</li><?php endforeach; endif; else: echo "" ;endif; ?>
 				
 				<ul class="pagination">
@@ -137,7 +137,7 @@ $(function(){
 	// 	window.location.href=url;
 	// })
 
-
+	console.log();
 	if(window.location.href.indexOf('&')>-1&&window.location.href.indexOf('report=')>-1)
 	{
 		$('#report').val(window.location.href.split('=')[2].split('&')[0]);
@@ -149,13 +149,13 @@ $(function(){
 		$('month').val('ALL')
 	}
 	$('#report').change(function(){
-		window.location.href='http://10.2.2.14:900/index.php?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
+		window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
 	});
 	$('#month').change(function(){
-		window.location.href='http://10.2.2.14:900/index.php?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
+		window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
 	});
 	$('#year').change(function(){
-		window.location.href='http://10.2.2.14:900/index.php?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
+		window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
 	});
 });
 </script>

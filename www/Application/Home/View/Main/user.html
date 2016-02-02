@@ -49,7 +49,7 @@
 					<li class="list-group-item">
 						<a href="{:U('main/download',array('id'=>$vo['id']))}" class="badge" target="_blank">下载</a>
 				    	<a href="{:U('main/reportdel',array('id'=>$vo['id']))}" class="badge">删除</a>
-				    		{$vo.year}年{$vo.month}月{$vo.frequentness}频次{$vo.reportname}
+				    		{$vo.year}年{$vo.month}月{$vo.reportname}({$vo.frequentness})
 				  	</li>
 			  	</volist>
 				
@@ -112,7 +112,7 @@ $(function(){
 	// 	window.location.href=url;
 	// })
 
-
+	console.log();
 	if(window.location.href.indexOf('&')>-1&&window.location.href.indexOf('report=')>-1)
 	{
 		$('#report').val(window.location.href.split('=')[2].split('&')[0]);
@@ -124,13 +124,13 @@ $(function(){
 		$('month').val('ALL')
 	}
 	$('#report').change(function(){
-		window.location.href='http://10.2.2.14:900/index.php?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
+		window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
 	});
 	$('#month').change(function(){
-		window.location.href='http://10.2.2.14:900/index.php?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
+		window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
 	});
 	$('#year').change(function(){
-		window.location.href='http://10.2.2.14:900/index.php?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
+		window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
 	});
 });
 </script>

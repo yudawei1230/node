@@ -65,7 +65,7 @@
 				<?php if(is_array($report_list)): $i = 0; $__LIST__ = $report_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="list-group-item">
 						<a href="<?php echo U('main/download',array('id'=>$vo['id']));?>" class="badge" target="_blank">下载</a>
 				    	<a href="<?php echo U('main/reportdel',array('id'=>$vo['id']));?>" class="badge">删除</a>
-				    		<?php echo ($vo["year"]); ?>年<?php echo ($vo["month"]); ?>月<?php echo ($vo["frequentness"]); ?>频次<?php echo ($vo["reportname"]); ?>
+				    		<?php echo ($vo["year"]); ?>年<?php echo ($vo["month"]); ?>月<?php echo ($vo["reportname"]); ?>(<?php echo ($vo["frequentness"]); ?>)
 				  	</li><?php endforeach; endif; else: echo "" ;endif; ?>
 					<ul class="pagination">
 						<?php echo ($page); ?>
@@ -100,34 +100,12 @@
 													<select name="year" id="year1">
 														<?php if(is_array($year)): $i = 0; $__LIST__ = $year;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option <?php if($vo == $curr_year){echo 'selected';} ?> value="<?php echo ($vo); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
 													</select>
-												</label>
-												<label class="checkbox-inline">
-													月度
-													<select name="month" id="month1">
-														<option <?php if(1 == $curr_month){echo 'selected';} ?> value="01" >01</option>
-														<option <?php if(2 == $curr_month){echo 'selected';} ?> value="02">02</option>
-														<option <?php if(3 == $curr_month){echo 'selected';} ?> value="03">03</option>
-														<option <?php if(4 == $curr_month){echo 'selected';} ?> value="04">04</option>
-														<option <?php if(5 == $curr_month){echo 'selected';} ?> value="05">05</option>
-														<option <?php if(6 == $curr_month){echo 'selected';} ?> value="06">06</option>
-														<option <?php if(7 == $curr_month){echo 'selected';} ?> value="07">07</option>
-														<option <?php if(8 == $curr_month){echo 'selected';} ?> value="08">08</option>
-														<option <?php if(9 == $curr_month){echo 'selected';} ?> value="09">09</option>
-														<option <?php if(10 == $curr_month){echo 'selected';} ?> value="10">10</option>
-														<option <?php if(11 == $curr_month){echo 'selected';} ?> value="11">11</option>
-														<option <?php if(12 == $curr_month){echo 'selected';} ?> value="12">12</option>
-													</select>
-												</label>
-												<label class="checkbox-inline">
+												</label>								<label class="checkbox-inline">
 													频度
-													<select name="frequentness" id="frequentness">
-														<option value="4" selected>4</option>
-
+													<select name="frequent" id="frequent">
+														<?php if(is_array($frequent)): $i = 0; $__LIST__ = $frequent;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option <?php if($vo == $frequentSelected){echo 'selected';} ?> value="<?php echo ($vo[1]); ?>"><?php echo ($vo[0]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
 													</select>
 												</label>
-
-
-
 										</div><!--/boxx-body-->
 									</div><!--/box-->
 
@@ -195,10 +173,43 @@ $(function(){
 			}
 		})
 		data['year'] = $('#year1').val();
-		data['month'] = $('#month1').val();
-		data['frequentness'] = $('#frequentness').val();
 		data['reportName'] = $('#reportName').text();
-		data['day'] = new Date($('#year1').val(),$('#month1').val(),0).getDate();
+		data['frequent'] = $('#frequent').val();
+		if($('#frequent').val()==0)
+		{
+			if($('#reportName').text()!="人行利润表")
+			{
+				data['month'] = "01";
+				data['day'] = "01";
+			}
+			else
+			{
+				data['month'] = "12";	
+			
+				data['day'] = new Date($('#year1').val(),12,0).getDate();
+			}
+		}
+		else
+		{
+			if($('#reportName').text()!="人行资产负债表")
+			{
+				switch($('#frequent').val())
+				{
+					case '1': data['month'] = "03"; data['day'] = new Date($('#year1').val(),3,0).getDate(); break;
+					case '2': data['month'] = "06"; data['day'] = new Date($('#year1').val(),6,0).getDate(); break;
+					case '3': data['month'] = "09"; data['day'] = new Date($('#year1').val(),9,0).getDate(); break;
+					case '4': data['month'] = "12"; data['day'] = new Date($('#year1').val(),12,0).getDate(); break;
+				}
+			}
+			else
+			{
+				if($('#frequent').val()<10)
+					data['month'] = "0"+$('#frequent').val();
+				else
+					data['month'] = $('#frequent').val();
+				data['day'] = new Date($('#year1').val(),$('#frequent').val(),0).getDate();
+			}
+		}
 		$.post('<?php echo U('main/editreport');?>',data,function(e){
 			if(e.err == 0){
 				if(e.exsitPf)
