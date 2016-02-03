@@ -9,16 +9,30 @@
 		<link  href="/Application/Home/View/Main/css/admin.css" type="text/css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="/Application/Home/View/Main/css/admin.css">
 		<script type="text/javascript" src="/Application/Home/View/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="/Application/Home/View/js/bootstrap.min.js"></script>
 		<?php echo ($other_script); ?>
 	</head>
 	<body>
 		<div class="navbar navbar-inverse">
 			<div class="container">
-				<div class="navbar-header">
-					<a href="<?php echo U('main/index');?>" class="navbar-brand">人行指标填报</a>
-					<a href="<?php echo U('main/index');?>" class="navbar-brand">人行报表导出</a>
-				</div>
-				<div class="navbar-collapse collapse">
+					<ul class="nav nav-tabs" role="tablist" style="float:left">
+					    <li role="presentation" class="active">
+					    	<a href="#home" aria-controls="home" role="tab" data-toggle="tab" id="ALL">全部</a>
+					    </li>
+					    <li role="presentation">
+					    	<a href="#home" aria-controls="home" role="tab" data-toggle="tab" id="ZCFZ">资产负载表</a>
+					    </li>
+					    <li role="presentation">
+					    	<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" id="LR">利润表</a>
+					    </li>
+					    <li role="presentation">
+					    	<a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" id="ZXTJ">专项统计表</a>
+						</li>
+					    <li role="presentation">
+					    	<a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" id="JGZB">监管指标表</a>
+					    </li>
+				  	</ul>
+				<div class="navbar-collapse collapse" style="float:right">
 					<span class="pull-right">当前登录用户：<?php echo ($user['username']); ?> [<a href="<?php echo U('login/logout');?>" >[退出]</a>]</span>
 					<span class="pull-right">[<a href="<?php echo U('main/editpassword');?>" >修改密码]&nbsp;&nbsp;</a></span>
 					<span class="pull-right">[<a href="<?php echo U('main/reportset');?>" >基本设置]&nbsp;&nbsp;</a></span>
@@ -32,16 +46,16 @@
 <div id="main-nav">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">压缩文件列表</h3>
+<!-- 			<h3 class="panel-title">压缩文件列表</h3>
 		<form id="reportform" action="/index.php?s=/home/main/changereport"  method="get">
-			<select class="form-control" id="report" name="report">
-				<option value="ALL">全部</option>
-				<option value="ZCFZ">资产负债表</option>
-				<option value="JGZB">监管指标表</option>
-				<option value="LR">利润表</option>
-				<option value="ZXTJ">专项统计表</option>
-			</select>
-		</form>
+<select class="form-control" id="report" name="report">
+	<option value="ALL">全部</option>
+	<option value="ZCFZ">资产负债表</option>
+	<option value="JGZB">监管指标表</option>
+	<option value="LR">利润表</option>
+	<option value="ZXTJ">专项统计表</option>
+</select>
+		</form> -->
 		</div>
 		<div class="panel-body">
 			<ul class="list-group">
@@ -53,22 +67,27 @@
 					    	</select>
 						</div>
 						<div class="form-group">
-							<select id="month" name="month">
-					    		<option <?php if('ALL' == $curr_month){echo 'selected';} ?> value="ALL" >全部</option>
-					    		<option <?php if(1 == $curr_month){echo 'selected';} ?> value="01" >01</option>
-								<option <?php if(2 == $curr_month){echo 'selected';} ?> value="02">02</option>
-								<option <?php if(3 == $curr_month){echo 'selected';} ?> value="03">03</option>
-								<option <?php if(4 == $curr_month){echo 'selected';} ?> value="04">04</option>
-								<option <?php if(5 == $curr_month){echo 'selected';} ?> value="05">05</option>
-								<option <?php if(6 == $curr_month){echo 'selected';} ?> value="06">06</option>
-								<option <?php if(7 == $curr_month){echo 'selected';} ?> value="07">07</option>
-								<option <?php if(8 == $curr_month){echo 'selected';} ?> value="08">08</option>
-								<option <?php if(9 == $curr_month){echo 'selected';} ?> value="09">09</option>
-								<option <?php if(10 == $curr_month){echo 'selected';} ?> value="10">10</option>
-								<option <?php if(11 == $curr_month){echo 'selected';} ?> value="11">11</option>
-								<option <?php if(12 == $curr_month){echo 'selected';} ?> value="12">12</option>
+							<select id="season" name="season">
+								<?php if(is_array($season)): $i = 0; $__LIST__ = $season;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option <?php if($vo[1] == $curr_season){echo 'selected';} ?> value="<?php echo ($vo[1]); ?>"><?php echo ($vo[0]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
 					    	</select>
 						</div>
+<!-- 						<div class="form-group">
+	<select id="month" name="month">
+					    		<option <?php if('ALL' == $curr_month){echo 'selected';} ?> value="ALL" >全部</option>
+					    		<option <?php if(1 == $curr_month){echo 'selected';} ?> value="01" >01</option>
+		<option <?php if(2 == $curr_month){echo 'selected';} ?> value="02">02</option>
+		<option <?php if(3 == $curr_month){echo 'selected';} ?> value="03">03</option>
+		<option <?php if(4 == $curr_month){echo 'selected';} ?> value="04">04</option>
+		<option <?php if(5 == $curr_month){echo 'selected';} ?> value="05">05</option>
+		<option <?php if(6 == $curr_month){echo 'selected';} ?> value="06">06</option>
+		<option <?php if(7 == $curr_month){echo 'selected';} ?> value="07">07</option>
+		<option <?php if(8 == $curr_month){echo 'selected';} ?> value="08">08</option>
+		<option <?php if(9 == $curr_month){echo 'selected';} ?> value="09">09</option>
+		<option <?php if(10 == $curr_month){echo 'selected';} ?> value="10">10</option>
+		<option <?php if(11 == $curr_month){echo 'selected';} ?> value="11">11</option>
+		<option <?php if(12 == $curr_month){echo 'selected';} ?> value="12">12</option>
+					    	</select>
+</div> -->
 <!-- 						<button type="submit" class="btn btn-default btn-xs" id="search">搜索</button> -->
 					</form>
 			  	</li>
@@ -92,6 +111,7 @@
 			<div class="col-xs-12">
 				<div class="page-header">
 					<!-- <h1>资产负债表</h1> -->
+
 				</div>
 				<div class="boxx">
 					<div class="boxx-body">
@@ -136,26 +156,32 @@ $(function(){
 	// 	var url = '<?php echo U("main/index");?>'+'?y='+year+'&m='+month;
 	// 	window.location.href=url;
 	// })
-
-	console.log();
+	$('a').click(function (e) {
+	 	window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+e.currentTarget.id+'&year='+$('#year').val()+'&month='+$('#season').val();
+	});
 	if(window.location.href.indexOf('&')>-1&&window.location.href.indexOf('report=')>-1)
 	{
-		$('#report').val(window.location.href.split('=')[2].split('&')[0]);
-		$('#month').val(window.location.href.split('=')[4]);
+		//$('#report').val(window.location.href.split('=')[2].split('&')[0]);
+		$('#ALL').parent().removeClass("active");
+		$('#'+window.location.href.split('=')[2].split('&')[0]).parent().addClass("active");
+		//$('#month').val(window.location.href.split('=')[4]);
 	}
 	else
 	{
-		$('#report').val('ALL');
-		$('month').val('ALL')
+		//$('#report').val('ALL');
+		//$('month').val('ALL')
 	}
-	$('#report').change(function(){
+/*	$('#report').change(function(){
 		window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
-	});
-	$('#month').change(function(){
-		window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
+	});*/
+/*	$('#month').change(function(){
+		window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+$('.active').children()[0].id+'&year='+$('#year').val()+'&month='+$('#month').val();
+	});*/
+	$('#season').change(function(){
+		window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+$('.active').children()[0].id+'&year='+$('#year').val()+'&month='+$('#season').val();
 	});
 	$('#year').change(function(){
-		window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+$('#report').val()+'&year='+$('#year').val()+'&month='+$('#month').val();
+		window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+$('.active').children()[0].id+'&year='+$('#year').val()+'&month='+$('#season').val();
 	});
 });
 </script>

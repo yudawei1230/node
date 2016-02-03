@@ -31,6 +31,8 @@ class MainController extends FrontController {
 			for ($i=1; $i<=5; $i++) { 
 				$year[]= $curr_year-$i;
 			}
+			$season = [["全部",'ALL'],["一月",'01'],["二月",'02'],["三月",'03'],["四月",'04'],["五月",'05'],["六月",'06'],["七月",'07'],["八月",'08'],["九月",'09'],["十月",'10'],["十一月",'11'],["十二月",'12']];
+			$this->assign('season',$season);	
 			if($map['year'] == ''){
 				$this->assign('curr_year',$curr_year);				
 			}else{
@@ -435,6 +437,82 @@ class MainController extends FrontController {
 		}else{
 			$this->assign('curr_year',$years);				
 		}
+		if($report=="LR")
+		{
+			$season = [["全部",'ALL'],["第一季度",'03'],["第二季度",'06'],["第三季度",'09'],["第四季度",'12']];
+			if($month ==""||$month=="undefined")
+			{
+			    $curr_season = "全部";
+			    $month = 'ALL';
+			}
+			else if($month=='01'||$month=='02')
+				{
+					$month = "03";
+					$curr_season = "03";
+				}
+			else if($month=='04'||$month=='05')
+				{
+					$month = "06";
+					$curr_season = "06";
+				}
+			else if($month=='07'||$month=='08')
+				{
+					$month = "09";
+					$curr_season = "09";
+				}
+			else if($month=='10'||$month=='11')
+				{
+					$month = "12";
+					$curr_season = "12";
+				}
+			else
+				$curr_season = $month;
+		}
+		else if($report=="ZCFZ"||$report=="ALL")
+		{
+			$season = [["全部",'ALL'],["一月",'01'],["二月",'02'],["三月",'03'],["四月",'04'],["五月",'05'],["六月",'06'],["七月",'07'],["八月",'08'],["九月",'09'],["十月",'10'],["十一月",'11'],["十二月",'12']];
+			if($month==""||$month=="undefined")
+			{
+			    $curr_season = "全部";
+			    $month = 'ALL';
+			}
+			else
+				$curr_season = $month;
+		}
+		else
+		{
+			$season = [["全部",'ALL'],["初始",'01'],["第一季度",'03'],["第二季度",'06'],["第三季度",'09'],["第四季度",'12']];
+			if($month==""||$month=="undefined")
+			{
+			    $curr_season = "全部";
+			    $month = 'ALL';
+			}
+			else if($month=='02')
+				{
+					$month = "03";
+					$curr_season = "03";
+				}
+			else if($month=='04'||$month=='05')
+				{
+					$month = "06";
+					$curr_season = "06";
+				}
+			else if($month=='07'||$month=='08')
+				{
+					$month = "09";
+					$curr_season = "09";
+				}
+			else if($month=='10'||$month=='11')
+				{
+					$month = "12";
+					$curr_season = "12";
+				}
+			else
+				$curr_season = $month;
+
+		}
+		$this->assign('curr_season',$curr_season);
+		$this->assign('season',$season);	
     	if($report!="ALL"&&$month!="ALL")
 		$tmp = $report_db ->where(array('u_id'=>$this->user['id'],'year'=>$years,'reportname'=>$report,'month'=>$month))->order('month')->select();
 		else if($month=="ALL"&&$report=="ALL")
@@ -445,13 +523,7 @@ class MainController extends FrontController {
 			$tmp = $report_db ->where(array('u_id'=>$this->user['id'],'year'=>$years,'month'=>$month))->order('month')->select();
 		for($i=0;$i<count($tmp);$i++)
 		{
-/*			switch($tmp[$i]['reportname'])
-			{
-				case "JGZB": $tmp[$i]['reportname'] = "监管指标表";$tmp[$i]['frequentness'] += "季度"; break;
-				case "ZXTJ": $tmp[$i]['reportname'] = "专项统计表";$tmp[$i]['frequentness'] += "季度"; break;
-				case "LR": $tmp[$i]['reportname'] = "利润表";$tmp[$i]['frequentness'] += "季度";break;
-				case "ZCFZ": $tmp[$i]['reportname'] = "资产负债表";$tmp[$i]['frequentness'] += "月"; break;
-			}*/
+
 			if($tmp[$i]['frequentness']==0)
 			{
 				if($tmp[$i]['reportname']=="LR")

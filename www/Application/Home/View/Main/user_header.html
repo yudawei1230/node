@@ -8,16 +8,30 @@
 		<link  href="__TPL_PATH__/Main/css/admin.css" type="text/css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="__TPL_PATH__/Main/css/admin.css">
 		<script type="text/javascript" src="__TPL_PATH__/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="__TPL_PATH__/js/bootstrap.min.js"></script>
 		{$other_script}
 	</head>
 	<body>
 		<div class="navbar navbar-inverse">
 			<div class="container">
-				<div class="navbar-header">
-					<a href="{:U('main/index')}" class="navbar-brand">人行指标填报</a>
-					<a href="{:U('main/index')}" class="navbar-brand">人行报表导出</a>
-				</div>
-				<div class="navbar-collapse collapse">
+					<ul class="nav nav-tabs" role="tablist" style="float:left">
+					    <li role="presentation" class="active">
+					    	<a href="#home" aria-controls="home" role="tab" data-toggle="tab" id="ALL">全部</a>
+					    </li>
+					    <li role="presentation">
+					    	<a href="#home" aria-controls="home" role="tab" data-toggle="tab" id="ZCFZ">资产负载表</a>
+					    </li>
+					    <li role="presentation">
+					    	<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" id="LR">利润表</a>
+					    </li>
+					    <li role="presentation">
+					    	<a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" id="ZXTJ">专项统计表</a>
+						</li>
+					    <li role="presentation">
+					    	<a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" id="JGZB">监管指标表</a>
+					    </li>
+				  	</ul>
+				<div class="navbar-collapse collapse" style="float:right">
 					<span class="pull-right">当前登录用户：{$user['username']} [<a href="{:U('login/logout')}" >[退出]</a>]</span>
 					<span class="pull-right">[<a href="{:U('main/editpassword')}" >修改密码]&nbsp;&nbsp;</a></span>
 					<span class="pull-right">[<a href="{:U('main/reportset')}" >基本设置]&nbsp;&nbsp;</a></span>
