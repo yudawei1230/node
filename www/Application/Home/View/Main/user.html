@@ -86,6 +86,7 @@
 											<label for="organizationcode" class="col-lg-2 control-label">上传EXCEL表：</label>
 											<div class="col-lg-10">
 												<input type="file" name="table" />
+												<input type="text" name="backurl" id="backurl" style="display:none"  />
 												<p class="help-block">请上传97-2003 Excel格式的xls文件</p>
 											</div>
 										</div>
@@ -119,6 +120,7 @@ $(function(){
 	// 	var url = '{:U("main/index")}'+'?y='+year+'&m='+month;
 	// 	window.location.href=url;
 	// })
+	$('#backurl').val(window.location.href);
 	$('a').click(function (e) {
 	 	window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+e.currentTarget.id+'&year='+$('#year').val()+'&month='+$('#season').val();
 	});

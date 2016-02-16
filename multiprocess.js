@@ -11,9 +11,11 @@ if (cluster.isMaster) {
        return n > 1 ? fibo(n - 1) + fibo(n - 2) : 1;
     }
     app.get('/', function(req, res){
-      var n = fibo(~~req.query.n || 1);//接收参数
+      //console.log(req.query);
+      var n = fibo(req.query.n || 1);//接收参数
       res.send(n.toString()+"id = #"+cluster.worker.id+" make the response");
-      console.log(n.toString()+"id = #"+cluster.worker.id+" make the response");
+      //console.log(n.toString()+"id = #"+cluster.worker.id+" make the response");
+      console.log()
     });
     app.listen(8124);
     console.log('listen on 8124');

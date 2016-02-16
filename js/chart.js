@@ -9,14 +9,14 @@ var myModule = angular.module("myapp", []);
 var touchEnd;
 //JqueryInit && JqueryModule
 jQuery(document).ready(function () {
-    var socket=io.connect(),//与服务器进行连接
+/*    var socket=io.connect(),//与服务器进行连接
     button=document.getElementById('selectDate');
     button.onclick=function(){
         socket.emit('foo', 'hello');//发送一个名为foo的事件，并且传递一个字符串数据‘hello’
     }
     socket.on('news',function(data){
         console.log(data);
-    });
+    });*/
     jQuery('.wait').css("display", 'none');
     jQuery('.wait').css("top", window.innerHeight / 2 - 16 + "px");
     jQuery('.wait').css("left", window.innerWidth / 2 - 16 + "px");

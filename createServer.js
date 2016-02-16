@@ -9,10 +9,10 @@ if (cluster.isMaster) {
 } else {
    var server = http.createServer( function (request, response) {  
    url.urlParse(request,response);
-
    }).listen(8081);
+   console.log("id = #"+cluster.worker.id+" listen on 8124");
 }
-var io = require('socket.io').listen(server);
+/*var io = require('socket.io').listen(server);
 
 // 控制台会输出以下信息
 console.log('Server running at http://127.0.0.1:8081/');
@@ -45,4 +45,4 @@ io.on('connect', function(socket) {
       io.emit("news","web socket has reconnected");
 });
 
-});
+});*/

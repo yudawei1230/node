@@ -48,44 +48,46 @@
 			<h3 class="panel-title">Panel title</h3>
 		</div>
 		<div class="panel-body">
-			<ul class="list-group">
-				<li class="list-group-item">
-					<form class="form-inline" action="<?php echo U('main/index');?>">
-						<div class="form-group">
-							<select id="year" name="year">
-								<?php if(is_array($year)): $i = 0; $__LIST__ = $year;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option <?php if($vo == $curr_year){echo 'selected';} ?> value="<?php echo ($vo); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
-					    	</select>
-						</div>
-						<div class="form-group">
-							<select id="month" name="month">
-					    		<option <?php if(1 == $curr_month){echo 'selected';} ?> value="01" >01</option>
-								<option <?php if(2 == $curr_month){echo 'selected';} ?> value="02">02</option>
-								<option <?php if(3 == $curr_month){echo 'selected';} ?> value="03">03</option>
-								<option <?php if(4 == $curr_month){echo 'selected';} ?> value="04">04</option>
-								<option <?php if(5 == $curr_month){echo 'selected';} ?> value="05">05</option>
-								<option <?php if(6 == $curr_month){echo 'selected';} ?> value="06">06</option>
-								<option <?php if(7 == $curr_month){echo 'selected';} ?> value="07">07</option>
-								<option <?php if(8 == $curr_month){echo 'selected';} ?> value="08">08</option>
-								<option <?php if(9 == $curr_month){echo 'selected';} ?> value="09">09</option>
-								<option <?php if(10 == $curr_month){echo 'selected';} ?> value="10">10</option>
-								<option <?php if(11 == $curr_month){echo 'selected';} ?> value="11">11</option>
-								<option <?php if(12 == $curr_month){echo 'selected';} ?> value="12">12</option>
-					    	</select>
-						</div>
-						<button type="submit" class="btn btn-default btn-xs" id="search">搜索</button>
-					</form>
-		
-			  	</li>
-				<?php if(is_array($report_list)): $i = 0; $__LIST__ = $report_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="list-group-item">
-						<a href="<?php echo U('main/download',array('id'=>$vo['id']));?>" class="badge" target="_blank">下载</a>
-				    	<a href="<?php echo U('main/reportdel',array('id'=>$vo['id']));?>" class="badge">删除</a>
-				    		<?php echo ($vo["year"]); ?>年<?php echo ($vo["month"]); ?>月<?php echo ($vo["reportname"]); ?>(<?php echo ($vo["frequentness"]); ?>)
-				  	</li><?php endforeach; endif; else: echo "" ;endif; ?>
-					<ul class="pagination">
-						<?php echo ($page); ?>
-					</ul>
+		<button type="button" class="btn btn-primary" action="save" style="margin-right: 25px">提交</button>
+		<button type="button" class="btn btn-primary" id="back" path="<?php echo ($backpath); ?>">返回</button>
+	<!-- <ul class="list-group">
+		<li class="list-group-item">
+			<form class="form-inline" action="<?php echo U('main/index');?>">
+				<div class="form-group">
+					<select id="year" name="year">
+						<?php if(is_array($year)): $i = 0; $__LIST__ = $year;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option <?php if($vo == $curr_year){echo 'selected';} ?> value="<?php echo ($vo); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+			    	</select>
+				</div>
+				<div class="form-group">
+					<select id="month" name="month">
+			    		<option <?php if(1 == $curr_month){echo 'selected';} ?> value="01" >01</option>
+						<option <?php if(2 == $curr_month){echo 'selected';} ?> value="02">02</option>
+						<option <?php if(3 == $curr_month){echo 'selected';} ?> value="03">03</option>
+						<option <?php if(4 == $curr_month){echo 'selected';} ?> value="04">04</option>
+						<option <?php if(5 == $curr_month){echo 'selected';} ?> value="05">05</option>
+						<option <?php if(6 == $curr_month){echo 'selected';} ?> value="06">06</option>
+						<option <?php if(7 == $curr_month){echo 'selected';} ?> value="07">07</option>
+						<option <?php if(8 == $curr_month){echo 'selected';} ?> value="08">08</option>
+						<option <?php if(9 == $curr_month){echo 'selected';} ?> value="09">09</option>
+						<option <?php if(10 == $curr_month){echo 'selected';} ?> value="10">10</option>
+						<option <?php if(11 == $curr_month){echo 'selected';} ?> value="11">11</option>
+						<option <?php if(12 == $curr_month){echo 'selected';} ?> value="12">12</option>
+			    	</select>
+				</div>
+				<button type="submit" class="btn btn-default btn-xs" id="search">搜索</button>
+			</form>
+
+	  	</li>
+		<?php if(is_array($report_list)): $i = 0; $__LIST__ = $report_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="list-group-item">
+				<a href="<?php echo U('main/download',array('id'=>$vo['id']));?>" class="badge" target="_blank">下载</a>
+		    	<a href="<?php echo U('main/reportdel',array('id'=>$vo['id']));?>" class="badge">删除</a>
+		    		<?php echo ($vo["year"]); ?>年<?php echo ($vo["month"]); ?>月<?php echo ($vo["reportname"]); ?>(<?php echo ($vo["frequentness"]); ?>)
+		  	</li><?php endforeach; endif; else: echo "" ;endif; ?>
+			<ul class="pagination">
+				<?php echo ($page); ?>
 			</ul>
-		</div>
+	</ul>-->
+</div> 
 	</div>
 </div><!--/main-nav-->
 
@@ -109,17 +111,17 @@
 										</div><!--/box-header-->
 										<div class="boxx-body pt">
 											<form action="/index.php?s=/home/main/editreport"  method="post" id="table_post" >
-												<label class="checkbox-inline">
-													年度
-													<select name="year" id="year1">
-														<?php if(is_array($year)): $i = 0; $__LIST__ = $year;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option <?php if($vo == $curr_year){echo 'selected';} ?> value="<?php echo ($vo); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
-													</select>
-												</label>								<label class="checkbox-inline">
-													频度
-													<select name="frequent" id="frequent">
-														<?php if(is_array($frequent)): $i = 0; $__LIST__ = $frequent;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option <?php if($vo == $frequentSelected){echo 'selected';} ?> value="<?php echo ($vo[1]); ?>"><?php echo ($vo[0]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
-													</select>
-												</label>
+											<label class="checkbox-inline">
+											年度
+											<select name="year" id="year1">
+												<?php if(is_array($year)): $i = 0; $__LIST__ = $year;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option <?php if($vo == $curr_year){echo 'selected';} ?> value="<?php echo ($vo); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+											</select>
+										</label>								<label class="checkbox-inline">
+											频度
+											<select name="frequent" id="frequent">
+												<?php if(is_array($frequent)): $i = 0; $__LIST__ = $frequent;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option <?php if($vo == $frequentSelected){echo 'selected';} ?> value="<?php echo ($vo[1]); ?>"><?php echo ($vo[0]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+											</select>
+										</label> 
 										</div><!--/boxx-body-->
 									</div><!--/box-->
 
@@ -131,7 +133,7 @@
 													<th>指标代码</th>
 													<th>余额</th>
 												</thead>
-												<tbody>
+												<tbody id="path" path='<?php echo ($path); ?>'>
 													<!-- <?php if(is_array($table_val)): $i = 0; $__LIST__ = $table_val;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>-->
 													<tr>
 														<td><?php echo ($vo[0]); ?></td>
@@ -151,7 +153,7 @@
 											<div class="boxx">
 												<div class="pull-left">
 													<form class="form-inline mb" role="form">
-														<button type="button" class="btn btn-primary" id="save">提交</button>
+														<button type="button" class="btn btn-primary" action="save">提交</button>
 													</form>
 												</div>
 												<div class="clearfix"></div>
@@ -175,7 +177,10 @@ $(function(){
 	// 	$('#table_post').submit();
 	// })
 	var data = {};
-	$('#save').click(function(){
+	$('#back').click(function(){
+		window.location.href=$('#back').attr('path');
+	});
+	$("button[action='save']").click(function(){
 		var tr_obj = $('#table_list').find('tr');
 		tr_obj.each(function(i){
 			var code = tr_obj.eq(i).find('td').eq(1).html();
@@ -189,6 +194,7 @@ $(function(){
 		data['year'] = $('#year1').val();
 		data['reportName'] = $('#reportName').text();
 		data['frequent'] = $('#frequent').val();
+		data['path'] = $('#path').attr('path');
 		if($('#frequent').val()==0)
 		{
 			if($('#reportName').text()!="人行利润表")

@@ -134,6 +134,7 @@ class MainController extends FrontController {
 	        alert($upload->getError(),'Main/index');
 	    }else{// 上传成功
 	    	session('upload_file',$info);
+	    	session('backurl',$_POST['backurl']);
 	    }
 	    alert('上传成功','main/report');
     }
@@ -272,7 +273,7 @@ class MainController extends FrontController {
 					$rename = './upload/'.$info['table']['savepath'].$set['institutioncode'].'/'.$curr_year."-".$curr_month."-".$set['institutioncode']."-"."ZCFZ".$count.".xls";
 				}
 		}
-				if($reportName == "人行专项统计表")
+		if($reportName == "人行专项统计表")
 		{
 			$rename = './upload/'.$info['table']['savepath'].$set['institutioncode'].'/'.$curr_year."-".$curr_month."-".$set['institutioncode']."-"."ZXTJ".$count.".xls";
 			while(file_exists($rename))
@@ -281,7 +282,7 @@ class MainController extends FrontController {
 					$rename = './upload/'.$info['table']['savepath'].$set['institutioncode'].'/'.$curr_year."-".$curr_month."-".$set['institutioncode']."-"."ZXTJ".$count.".xls";
 				}
 		}
-				if($reportName == "人行利润表")
+		if($reportName == "人行利润表")
 		{
 			$rename = './upload/'.$info['table']['savepath'].$set['institutioncode'].'/'.$curr_year."-".$curr_month."-".$set['institutioncode']."-"."LR".$count.".xls";
 			while(file_exists($rename))
@@ -290,9 +291,13 @@ class MainController extends FrontController {
 					$rename = './upload/'.$info['table']['savepath'].$set['institutioncode'].'/'.$curr_year."-".$curr_month."-".$set['institutioncode']."-"."LR".$count.".xls";
 				}
 		}
+		
+		$this->assign('backpath',session('backurl'));
+		$this->assign('path',$rename);		
 		rename($file_path,$rename);
 		session('upload_file',null);
 		$this->display('main/report');
+
     }
     public function editreport(){
     	$year = $_POST['year'];
@@ -321,7 +326,7 @@ class MainController extends FrontController {
 
     		}
     		$days = date('t', strtotime('-1 month'));
-    	}*/
+    	}*/	
     	$frequentness = $_POST['frequentness'];
     	unset($_POST['frequentness']);
     	foreach($_POST as $val){
@@ -345,6 +350,7 @@ class MainController extends FrontController {
 		//dat
 		$dat_con = '';
 		$counts=1;
+
 		foreach($data as $val){
 			if($counts++==count($data))
 				break;
