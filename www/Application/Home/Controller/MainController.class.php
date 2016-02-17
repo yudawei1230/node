@@ -200,7 +200,9 @@ class MainController extends FrontController {
 		$sheet = $PHPExcel->getSheet(0); // 读取第一個工作表
 		$highestRow = $sheet->getHighestRow(); // 取得总行数
 		$highestColumm = $sheet->getHighestColumn(); // 取得总列数
-		
+/*		$sheet->getCell(A1)->setValue("AAA");
+		$PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, 'Excel5');
+		$PHPWriter->save('new.xls');*/
 		
 		//dat
 		$dat_con = '';
@@ -309,6 +311,7 @@ class MainController extends FrontController {
     	$frequent = ($_POST['frequent']);
     	unset($_POST['frequent']);
     	$zip_month = $month;
+    	$Excelpath = $_POST['path'];
     	$reportName = $_POST['reportName'];
     	switch($reportName)
     	{
@@ -330,9 +333,13 @@ class MainController extends FrontController {
     	$frequentness = $_POST['frequentness'];
     	unset($_POST['frequentness']);
     	foreach($_POST as $val){
+    		if(strpos($val,"&nbsp;"))
+    			{
+    				$val = str_replace("&nbsp;","",$val);
+    			}
     		$data[] = explode('*', $val);
-    	}
 
+    	}
     	$set = M('User_set')->where(array('u_id'=>$this->user['id']))->find();
 		$user_set[0] = 'I00001';//关键字代码
 		$user_set[1] = 'A1411';//表单代码
@@ -351,11 +358,57 @@ class MainController extends FrontController {
 		$dat_con = '';
 		$counts=1;
 
+				/** PHPExcel_IOFactory */
+		vendor('PHPExcel.PHPExcel.IOFactory');
+		$reader = \PHPExcel_IOFactory::createReader('Excel5'); //设置以Excel5格式(Excel97-2003工作簿)
+		//$PHPExcel = $PHPReader->load($dir.$templateName);
+		$PHPExcel = $reader->load($Excelpath); // 载入excel文件
+		$sheet = $PHPExcel->getSheet(0); // 读取第一個工作表
+		$highestRow = $sheet->getHighestRow(); // 取得总行数
+		$highestColumm = $sheet->getHighestColumn(); // 取得总列数
+		$excelName = $sheet->getCell('A'.'1')->getValue();
+		$datacol1 = 'B';
+		$datacol2 = 'A';
+		$row = 4;
+		$p =0;
+		if($excelName =="")
+		{
+			$excelName = "监管指标表";
+			$datacol1 = 'C';
+			$datacol2 = 'B';
+			$datacol3 = 'D';
+			$row = 6;
+		}
+		else if($excelName !="人行资产负债表")
+			$datacol3 = 'C';
+		else
+			$datacol3 = 'D';
+
 		foreach($data as $val){
 			if($counts++==count($data))
 				break;
+			if($val[1]=="")
+				break;
 			$dat_con .=$user_set[0].'|'.$val[0].'|'.$val[1]."\r\n";
 		}
+
+		for($i=0;$i<$highestRow;$row++){
+			if($row>$highestRow)
+				break;
+
+			if($data[$i][0]==substr($sheet->getCell($datacol2.$row)->getValue(),0,strlen($data[$i][0])))
+			{
+				$sheet->getCell($datacol3.$row)->setValue($data[$i][1]);
+				$i++;
+			}
+			else
+			{
+				$sheet->getCell($datacol3.$row)->setValue("");
+				$g[$p++] = substr($sheet->getCell($datacol2.$row)->getValue(),0,strlen($data[$i][0]));
+			}		
+		}
+		$PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, 'Excel5');
+		$PHPWriter->save($Excelpath);
 		$dat_con = trim($dat_con);
 
 		/*filename;
@@ -411,6 +464,7 @@ class MainController extends FrontController {
 				$exsitPf = 0;
 			}
 		}
+
 		if($a){
 			unset($_POST['reportName']);
 			@unlink(realpath(TEMP_PATH.$idx_filename));
@@ -418,7 +472,11 @@ class MainController extends FrontController {
 			@unlink(realpath(TEMP_PATH.$txt_filename));
 			echo json_encode(array(
 				'err'=>0,
-				'exsitPf' =>$exsitPf
+				'exsitPf' =>$exsitPf,
+				'data' =>$data,
+				'row' =>$row,
+				'datacol'=>$datacol2,
+				'col' =>$g
 			),true);
 		}
 

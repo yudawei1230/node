@@ -45,7 +45,7 @@
 <div id="main-nav">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">Panel title</h3>
+			<h3 class="panel-title"></h3>
 		</div>
 		<div class="panel-body">
 		<button type="button" class="btn btn-primary" action="save" style="margin-right: 25px">提交</button>
@@ -97,7 +97,7 @@
 			<div class="col-xs-12">
 				<div class="page-header">
 					<!-- <h1>资产负债表</h1> -->
-		    			<h1 id="reportName"><?php echo ($reportName); ?></h1>
+	    			<h1 id="reportName"><?php echo ($reportName); ?></h1>
 				</div>
 				<div class="boxx">
 					<div class="boxx-body">
@@ -139,7 +139,7 @@
 														<td><?php echo ($vo[0]); ?></td>
 														<td><?php echo ($vo[1]); ?></td>
 														<td>
-															<input type="text" value="<?php echo ($vo[2]); ?>" />
+															<input type="text" value="<?php echo ($vo[2]); ?>" onkeyup="javascript:if(this.value=='')this.value=''"/>
 														</td>
 													</tr>
 													<!--<?php endforeach; endif; else: echo "" ;endif; ?> -->
@@ -231,6 +231,10 @@ $(function(){
 			}
 		}
 		$.post('<?php echo U('main/editreport');?>',data,function(e){
+/*			console.log(e.data);
+			console.log(e.row);
+			console.log(e.datacol);
+			console.log(e.col);*/
 			if(e.err == 0){
 				if(e.exsitPf)
 					alert("此月报表已存在，压缩包生成成功，覆盖成功");
