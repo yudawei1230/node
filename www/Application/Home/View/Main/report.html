@@ -5,49 +5,9 @@
 			<h3 class="panel-title"></h3>
 		</div>
 		<div class="panel-body">
-		<button type="button" class="btn btn-primary" action="save" style="margin-right: 25px">提交</button>
+		<button type="button" class="btn btn-primary" action="save" style="margin-right: 25px" isDel={$id}>提交</button>
 		<button type="button" class="btn btn-primary" id="back" path="{$backpath}">返回</button>
-	<!-- <ul class="list-group">
-		<li class="list-group-item">
-			<form class="form-inline" action="{:U('main/index')}">
-				<div class="form-group">
-					<select id="year" name="year">
-						<volist name="year" id="vo">
-			    			<option <php> if($vo == $curr_year){echo 'selected';}</php> value="{$vo}">{$vo}</option>
-			    		</volist>
-			    	</select>
-				</div>
-				<div class="form-group">
-					<select id="month" name="month">
-			    		<option <php> if(1 == $curr_month){echo 'selected';}</php> value="01" >01</option>
-						<option <php> if(2 == $curr_month){echo 'selected';}</php> value="02">02</option>
-						<option <php> if(3 == $curr_month){echo 'selected';}</php> value="03">03</option>
-						<option <php> if(4 == $curr_month){echo 'selected';}</php> value="04">04</option>
-						<option <php> if(5 == $curr_month){echo 'selected';}</php> value="05">05</option>
-						<option <php> if(6 == $curr_month){echo 'selected';}</php> value="06">06</option>
-						<option <php> if(7 == $curr_month){echo 'selected';}</php> value="07">07</option>
-						<option <php> if(8 == $curr_month){echo 'selected';}</php> value="08">08</option>
-						<option <php> if(9 == $curr_month){echo 'selected';}</php> value="09">09</option>
-						<option <php> if(10 == $curr_month){echo 'selected';}</php> value="10">10</option>
-						<option <php> if(11 == $curr_month){echo 'selected';}</php> value="11">11</option>
-						<option <php> if(12 == $curr_month){echo 'selected';}</php> value="12">12</option>
-			    	</select>
-				</div>
-				<button type="submit" class="btn btn-default btn-xs" id="search">搜索</button>
-			</form>
 
-	  	</li>
-		<volist name="report_list" id="vo">
-			<li class="list-group-item">
-				<a href="{:U('main/download',array('id'=>$vo['id']))}" class="badge" target="_blank">下载</a>
-		    	<a href="{:U('main/reportdel',array('id'=>$vo['id']))}" class="badge">删除</a>
-		    		{$vo.year}年{$vo.month}月{$vo.reportname}({$vo.frequentness})
-		  	</li>
-	  	</volist>
-			<ul class="pagination">
-				{$page}
-			</ul>
-	</ul>-->
 </div> 
 	</div>
 </div><!--/main-nav-->
@@ -83,7 +43,7 @@
 											频度
 											<select name="frequent" id="frequent">
 												<volist name="frequent" id="vo">
-													<option <php> if($vo == $frequentSelected){echo 'selected';}</php> value="{$vo[1]}">{$vo[0]}</option>
+													<option <php> if($vo[1] == $frequentSelected){echo 'selected';}</php> value="{$vo[1]}">{$vo[0]}</option>
 												</volist>
 											</select>
 										</label> 
@@ -118,7 +78,7 @@
 											<div class="boxx">
 												<div class="pull-left">
 													<form class="form-inline mb" role="form">
-														<button type="button" class="btn btn-primary" action="save">提交</button>
+														<button type="button" class="btn btn-primary" action="save" isDel={$id}>提交</button>
 													</form>
 												</div>
 												<div class="clearfix"></div>
@@ -137,15 +97,18 @@
 <include file="Main:console_footer" />
 <script type="text/javascript">
 $(function(){
-	// $('#save').click(function(){
-
-	// 	$('#table_post').submit();
-	// })
 	var data = {};
+	var isDel = 0;
 	$('#back').click(function(){
 		window.location.href=$('#back').attr('path');
 	});
 	$("button[action='save']").click(function(){
+		if($("button[action='save']").attr('isDel')!="")
+		{
+			isDel = 1;
+			$.get('{:U('main/checkDel')}',{id:$("button[action='save']").attr('isDel')},function(data){
+			});
+		}
 		var tr_obj = $('#table_list').find('tr');
 		tr_obj.each(function(i){
 			var code = tr_obj.eq(i).find('td').eq(1).html();
@@ -156,6 +119,7 @@ $(function(){
 				data[i] = code+'*'+prices;
 			}
 		})
+		data['isDel'] = isDel;
 		data['year'] = $('#year1').val();
 		data['reportName'] = $('#reportName').text();
 		data['frequent'] = $('#frequent').val();
@@ -196,10 +160,6 @@ $(function(){
 			}
 		}
 		$.post('{:U('main/editreport')}',data,function(e){
-/*			console.log(e.data);
-			console.log(e.row);
-			console.log(e.datacol);
-			console.log(e.col);*/
 			if(e.err == 0){
 				if(e.exsitPf)
 					alert("此月报表已存在，压缩包生成成功，覆盖成功");
