@@ -1,0 +1,860 @@
+[ 2016-02-25T16:40:14+08:00 ] 10.2.2.17 /index.php?s=/home/main/checkexcel&id=362&backpath=http://10.2.2.17:900/index.php?s=/home/main/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `report_report` WHERE `id` = 362 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `report_user_set` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `report_user_set` WHERE `u_id` = '2' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: report E:\wamp\www\Application\Home\Controller\MainController.class.php 第 684 行.
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(Application/Home/View/Main/console_footer.html): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: other_script E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 12 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.037004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.037004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-02-25T16:40:21+08:00 ] 10.2.2.17 /index.php?s=/home/main/checkdel.html&id=362
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `report_report` WHERE `id` = 362 LIMIT 1   [ RunTime:0.0010s ]
+SQL: DELETE FROM `report_report` WHERE `id` = 362 [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003001s ]
+
+[ 2016-02-25T16:40:21+08:00 ] 10.2.2.17 /index.php?s=/home/main/editreport.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+SQL: SHOW COLUMNS FROM `report_user_set` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `report_user_set` WHERE `u_id` = '2' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] rename(./upload/2016-02-24/41230123456789/2016-01-41230123456789-ZXTJ.xls,./upload/2016-02-25/41230123456789/2016-03-41230123456789-ZXTJ.xls):  E:\wamp\www\Application\Home\Controller\MainController.class.php 第 290 行.
+NOTIC: [2] mkdir(): No such file or directory E:\wamp\www\Application\Home\Controller\MainController.class.php 第 295 行.
+NOTIC: [8] Undefined index: frequentness E:\wamp\www\Application\Home\Controller\MainController.class.php 第 303 行.
+NOTIC: [2] fopen(./upload/2016-02-25/2-2016-03-1ZXTJ.zip): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Vendor\PclZip.php 第 2353 行.
+NOTIC: [8] Undefined variable: a E:\wamp\www\Application\Home\Controller\MainController.class.php 第 439 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-02-25T16:40:45+08:00 ] 10.2.2.17 /index.php?s=/home/main/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+NOTIC: [8] Undefined index: year E:\wamp\www\Application\Home\Controller\MainController.class.php 第 16 行.
+NOTIC: [8] Undefined index: month E:\wamp\www\Application\Home\Controller\MainController.class.php 第 17 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0120s ]
+NOTIC: [8] Undefined index: reportname E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 13 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `report_report` WHERE `u_id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `report_report` WHERE `u_id` = 2 ORDER BY month LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(Application/Home/View/Main/console_footer.html): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: other_script E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 13 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.036004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-02-25T16:43:08+08:00 ] 10.2.2.17 /index.php?s=/home/main/checkexcel&id=363&backpath=http://10.2.2.17:900/index.php?s=/home/main/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.1530s ]
+SQL: SELECT * FROM `report_report` WHERE `id` = 363 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `report_user_set` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `report_user_set` WHERE `u_id` = '2' LIMIT 1   [ RunTime:0.0070s ]
+NOTIC: [8] Undefined index: report E:\wamp\www\Application\Home\Controller\MainController.class.php 第 684 行.
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(Application/Home/View/Main/console_footer.html): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: other_script E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 12 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.137013s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.138013s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-02-25T16:43:13+08:00 ] 10.2.2.17 /index.php?s=/home/main/checkdel.html&id=363
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `report_report` WHERE `id` = 363 LIMIT 1   [ RunTime:0.0020s ]
+SQL: DELETE FROM `report_report` WHERE `id` = 363 [ RunTime:0.0020s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003001s ]
+
+[ 2016-02-25T16:43:13+08:00 ] 10.2.2.17 /index.php?s=/home/main/editreport.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+SQL: SHOW COLUMNS FROM `report_user_set` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `report_user_set` WHERE `u_id` = '2' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [2] mkdir(): No such file or directory E:\wamp\www\Application\Home\Controller\MainController.class.php 第 277 行.
+NOTIC: [2] rename(./upload/2016-02-24/41230123456789/2016-01-41230123456789-JGZB.xls,./upload/2016-02-25/41230123456789/2016-01-41230123456789-JGZB.xls):  E:\wamp\www\Application\Home\Controller\MainController.class.php 第 292 行.
+NOTIC: [8] Undefined index: frequentness E:\wamp\www\Application\Home\Controller\MainController.class.php 第 303 行.
+NOTIC: [2] fopen(./upload/2016-02-25/2-2016-01-0JGZB.zip): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Vendor\PclZip.php 第 2353 行.
+NOTIC: [8] Undefined variable: a E:\wamp\www\Application\Home\Controller\MainController.class.php 第 439 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-02-25T16:43:18+08:00 ] 10.2.2.17 /index.php?s=/home/main/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+NOTIC: [8] Undefined index: year E:\wamp\www\Application\Home\Controller\MainController.class.php 第 16 行.
+NOTIC: [8] Undefined index: month E:\wamp\www\Application\Home\Controller\MainController.class.php 第 17 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0340s ]
+NOTIC: [8] Undefined index: reportname E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 13 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `report_report` WHERE `u_id` = 2 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `report_report` WHERE `u_id` = 2 ORDER BY month LIMIT 0,10   [ RunTime:0.0030s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(Application/Home/View/Main/console_footer.html): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: other_script E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 13 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.037004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.038004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-02-25T16:44:20+08:00 ] 10.2.2.17 /index.php?s=/home/main/uploadreport.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+SQL: SHOW COLUMNS FROM `report_user_set` [ RunTime:0.0250s ]
+SQL: SELECT * FROM `report_user_set` WHERE `u_id` = '2' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-02-25T16:44:23+08:00 ] 10.2.2.17 /index.php?s=/home/main/report.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+NOTIC: [8] Undefined index: year E:\wamp\www\Application\Home\Controller\MainController.class.php 第 134 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0290s ]
+NOTIC: [8] Undefined index: month E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 10 行.
+NOTIC: [8] Undefined index: reportname E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 13 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `report_report` WHERE `u_id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `report_report` WHERE `u_id` = 2 ORDER BY month LIMIT 0,10   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `report_user_set` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `report_user_set` WHERE `u_id` = '2' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] mkdir(): File exists E:\wamp\www\Application\Home\Controller\MainController.class.php 第 234 行.
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(Application/Home/View/Main/console_footer.html): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: other_script E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 12 行.
+NOTIC: [8] Undefined variable: id E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 51 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: id E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 120 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.040004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.040004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2016-02-25T16:44:24+08:00 ] 10.2.2.17 /index.php?s=/home/main/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+NOTIC: [8] Undefined index: year E:\wamp\www\Application\Home\Controller\MainController.class.php 第 16 行.
+NOTIC: [8] Undefined index: month E:\wamp\www\Application\Home\Controller\MainController.class.php 第 17 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0270s ]
+NOTIC: [8] Undefined index: reportname E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 13 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `report_report` WHERE `u_id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `report_report` WHERE `u_id` = 2 ORDER BY month LIMIT 0,10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(Application/Home/View/Main/console_footer.html): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: other_script E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 13 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.033003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-02-25T16:45:01+08:00 ] 10.2.2.17 /index.php?s=/home/main/uploadreport.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+SQL: SHOW COLUMNS FROM `report_user_set` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `report_user_set` WHERE `u_id` = '2' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-02-25T16:45:03+08:00 ] 10.2.2.17 /index.php?s=/home/main/report.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+NOTIC: [8] Undefined index: year E:\wamp\www\Application\Home\Controller\MainController.class.php 第 134 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0100s ]
+NOTIC: [8] Undefined index: month E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 10 行.
+NOTIC: [8] Undefined index: reportname E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 13 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `report_report` WHERE `u_id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `report_report` WHERE `u_id` = 2 ORDER BY month LIMIT 0,10   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `report_user_set` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `report_user_set` WHERE `u_id` = '2' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(Application/Home/View/Main/console_footer.html): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: other_script E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 12 行.
+NOTIC: [8] Undefined variable: id E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 51 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: id E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 120 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.052005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.052005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003001s ]
+
+[ 2016-02-25T16:45:16+08:00 ] 10.2.2.17 /index.php?s=/home/main/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+NOTIC: [8] Undefined index: year E:\wamp\www\Application\Home\Controller\MainController.class.php 第 16 行.
+NOTIC: [8] Undefined index: month E:\wamp\www\Application\Home\Controller\MainController.class.php 第 17 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0120s ]
+NOTIC: [8] Undefined index: reportname E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 13 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `report_report` WHERE `u_id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `report_report` WHERE `u_id` = 2 ORDER BY month LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(Application/Home/View/Main/console_footer.html): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: other_script E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 13 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.035004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-02-25T16:45:25+08:00 ] 10.2.2.17 /index.php?s=/home/main/uploadreport.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+SQL: SHOW COLUMNS FROM `report_user_set` [ RunTime:0.0390s ]
+SQL: SELECT * FROM `report_user_set` WHERE `u_id` = '2' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-02-25T16:45:29+08:00 ] 10.2.2.17 /index.php?s=/home/main/report.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+NOTIC: [8] Undefined index: year E:\wamp\www\Application\Home\Controller\MainController.class.php 第 134 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0110s ]
+NOTIC: [8] Undefined index: month E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 10 行.
+NOTIC: [8] Undefined index: reportname E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 13 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `report_report` WHERE `u_id` = 2 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SELECT * FROM `report_report` WHERE `u_id` = 2 ORDER BY month LIMIT 0,10   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `report_user_set` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `report_user_set` WHERE `u_id` = '2' LIMIT 1   [ RunTime:0.0050s ]
+NOTIC: [2] rename(./upload/2016-02-25/56cebf2571575.xls,./upload/2016-02-25/41230123456789/2016-02-41230123456789-ZCFZ.xls):  E:\wamp\www\Application\Home\Controller\MainController.class.php 第 255 行.
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(Application/Home/View/Main/console_footer.html): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: other_script E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 12 行.
+NOTIC: [8] Undefined variable: id E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 51 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: id E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 120 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.041004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.041004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-02-25T16:45:31+08:00 ] 10.2.2.17 /index.php?s=/home/main/editreport.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+SQL: SHOW COLUMNS FROM `report_user_set` [ RunTime:0.0230s ]
+SQL: SELECT * FROM `report_user_set` WHERE `u_id` = '2' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] rename(./upload/2016-02-25/41230123456789/2016-02-41230123456789-ZCFZ.xls,./upload/2016-02-25/41230123456789/2016-01-max41230123456789-ZCFZ.xls):  E:\wamp\www\Application\Home\Controller\MainController.class.php 第 280 行.
+NOTIC: [8] Undefined index: frequentness E:\wamp\www\Application\Home\Controller\MainController.class.php 第 302 行.
+NOTIC: [2] fread(): Length parameter must be greater than 0 E:\wamp\www\ThinkPHP\Library\Vendor\PclZip.php 第 2673 行.
+NOTIC: [2] fread(): Length parameter must be greater than 0 E:\wamp\www\ThinkPHP\Library\Vendor\PclZip.php 第 2673 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `report_report` WHERE `u_id` = 2 AND `year` = '2016' AND `month` = '01' AND `frequentness` = '0' AND `reportname` = 'ZCFZ' LIMIT 1   [ RunTime:0.0020s ]
+SQL: INSERT INTO `report_report` (`path`,`u_id`,`year`,`month`,`frequentness`,`reportname`,`updatetime`) VALUES ('2016-02-25/2-2016-01-0ZCFZ.zip','2','2016','01','0','ZCFZ','1456389931') [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2016-02-25T16:45:32+08:00 ] 10.2.2.17 /index.php?s=/home/main/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+NOTIC: [8] Undefined index: year E:\wamp\www\Application\Home\Controller\MainController.class.php 第 16 行.
+NOTIC: [8] Undefined index: month E:\wamp\www\Application\Home\Controller\MainController.class.php 第 17 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0120s ]
+NOTIC: [8] Undefined index: reportname E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 13 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `report_report` WHERE `u_id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `report_report` WHERE `u_id` = 2 ORDER BY month LIMIT 0,10   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(Application/Home/View/Main/console_footer.html): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: other_script E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 13 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.035003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-02-25T16:46:46+08:00 ] 10.2.2.17 /index.php?s=/home/main/reportdel/id/364.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `report_report` WHERE `id` = 364 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] unlink(): Invalid argument E:\wamp\www\Application\Home\Controller\MainController.class.php 第 707 行.
+SQL: DELETE FROM `report_report` WHERE `id` = 364 [ RunTime:0.0010s ]
+
+[ 2016-02-25T16:46:47+08:00 ] 10.2.2.17 /index.php?s=/home/main/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+NOTIC: [8] Undefined index: year E:\wamp\www\Application\Home\Controller\MainController.class.php 第 16 行.
+NOTIC: [8] Undefined index: month E:\wamp\www\Application\Home\Controller\MainController.class.php 第 17 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0110s ]
+NOTIC: [8] Undefined index: reportname E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 13 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `report_report` WHERE `u_id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `report_report` WHERE `u_id` = 2 ORDER BY month LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(Application/Home/View/Main/console_footer.html): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: other_script E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 13 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2016-02-25T16:46:49+08:00 ] 10.2.2.17 /index.php?s=/home/main/uploadreport.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+SQL: SHOW COLUMNS FROM `report_user_set` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `report_user_set` WHERE `u_id` = '2' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-02-25T16:46:52+08:00 ] 10.2.2.17 /index.php?s=/home/main/report.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+NOTIC: [8] Undefined index: year E:\wamp\www\Application\Home\Controller\MainController.class.php 第 134 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0140s ]
+NOTIC: [8] Undefined index: month E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 10 行.
+NOTIC: [8] Undefined index: reportname E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 13 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `report_report` WHERE `u_id` = 2 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SELECT * FROM `report_report` WHERE `u_id` = 2 ORDER BY month LIMIT 0,10   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `report_user_set` [ RunTime:0.0470s ]
+SQL: SELECT * FROM `report_user_set` WHERE `u_id` = '2' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] rename(./upload/2016-02-25/56cebf79e664c.xls,./upload/2016-02-25/41230123456789/2016-02-41230123456789-ZXTJ.xls):  E:\wamp\www\Application\Home\Controller\MainController.class.php 第 255 行.
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(Application/Home/View/Main/console_footer.html): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: other_script E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 12 行.
+NOTIC: [8] Undefined variable: id E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 51 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: id E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 120 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.041005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.041005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.036004s ]
+INFO: [ app_end ] --END-- [ RunTime:0.039004s ]
+
+[ 2016-02-25T16:48:05+08:00 ] 10.2.2.17 /index.php?s=/home/main/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+NOTIC: [8] Undefined index: year E:\wamp\www\Application\Home\Controller\MainController.class.php 第 16 行.
+NOTIC: [8] Undefined index: month E:\wamp\www\Application\Home\Controller\MainController.class.php 第 17 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0110s ]
+NOTIC: [8] Undefined index: reportname E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 13 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `report_report` WHERE `u_id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `report_report` WHERE `u_id` = 2 ORDER BY month LIMIT 0,10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(Application/Home/View/Main/console_footer.html): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: other_script E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 13 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-02-25T16:49:38+08:00 ] 10.2.2.17 /index.php?s=/home/main/uploadreport.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+SQL: SHOW COLUMNS FROM `report_user_set` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `report_user_set` WHERE `u_id` = '2' LIMIT 1   [ RunTime:0.0030s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\wamp\www\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2016-02-25T16:49:40+08:00 ] 10.2.2.17 /index.php?s=/home/main/report.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+NOTIC: [8] Undefined index: year E:\wamp\www\Application\Home\Controller\MainController.class.php 第 134 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0120s ]
+NOTIC: [8] Undefined index: month E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 10 行.
+NOTIC: [8] Undefined index: reportname E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 13 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `report_report` WHERE `u_id` = 2 LIMIT 1   [ RunTime:0.0070s ]
+SQL: SELECT * FROM `report_report` WHERE `u_id` = 2 ORDER BY month LIMIT 0,10   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `report_user_set` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `report_user_set` WHERE `u_id` = '2' LIMIT 1   [ RunTime:0.0030s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(Application/Home/View/Main/console_footer.html): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: other_script E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 12 行.
+NOTIC: [8] Undefined variable: id E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 51 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: frequentSelected E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 86 行.
+NOTIC: [8] Undefined variable: id E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 120 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.041005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.041005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2016-02-25T16:53:01+08:00 ] 10.2.2.17 /index.php?s=/home/main/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+NOTIC: [8] Undefined index: year E:\wamp\www\Application\Home\Controller\MainController.class.php 第 16 行.
+NOTIC: [8] Undefined index: month E:\wamp\www\Application\Home\Controller\MainController.class.php 第 17 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0210s ]
+NOTIC: [8] Undefined index: reportname E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 13 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `report_report` WHERE `u_id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `report_report` WHERE `u_id` = 2 ORDER BY month LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(Application/Home/View/Main/console_footer.html): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: other_script E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 13 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.033003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-02-25T17:13:33+08:00 ] 10.2.2.17 /index.php?s=/home/main/checkexcel&id=370&backpath=http://10.2.2.17:900/index.php?s=/home/main/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000998s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001995s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001995s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `report_report` WHERE `id` = 370 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `report_user_set` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `report_user_set` WHERE `u_id` = '2' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: report E:\wamp\www\Application\Home\Controller\MainController.class.php 第 688 行.
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(Application/Home/View/Main/console_footer.html): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000998s ]
+NOTIC: [8] Undefined variable: other_script E:\wamp\www\Application\Runtime\Cache\Home\939307f013e9b49a177be2ab71d40464.php 第 12 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.045890s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.045890s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000997s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000997s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001995s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002993s ]
+
+[ 2016-02-25T17:13:38+08:00 ] 10.2.2.17 /index.php?s=/home/main/checkdel.html&id=370
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000997s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000997s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000997s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `report_report` WHERE `id` = 370 LIMIT 1   [ RunTime:0.0020s ]
+SQL: DELETE FROM `report_report` WHERE `id` = 370 [ RunTime:0.0020s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002992s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002992s ]
+
+[ 2016-02-25T17:13:39+08:00 ] 10.2.2.17 /index.php?s=/home/main/editreport.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000998s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000998s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000998s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+SQL: SHOW COLUMNS FROM `report_user_set` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `report_user_set` WHERE `u_id` = '2' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: frequentness E:\wamp\www\Application\Home\Controller\MainController.class.php 第 307 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\Application\Home\Controller\MainController.class.php 第 364 行.
+NOTIC: [2] fread(): Length parameter must be greater than 0 E:\wamp\www\ThinkPHP\Library\Vendor\PclZip.php 第 2673 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `report_report` WHERE `u_id` = 2 AND `year` = '2016' AND `month` = '01' AND `frequentness` = '0' AND `reportname` = 'JGZB' LIMIT 1   [ RunTime:0.0020s ]
+SQL: INSERT INTO `report_report` (`path`,`u_id`,`year`,`month`,`frequentness`,`reportname`,`updatetime`) VALUES ('2016-02-25/2-2016-01-0JGZB.zip','2','2016','01','0','JGZB','1456391618') [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001995s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002993s ]
+
+[ 2016-02-25T17:13:40+08:00 ] 10.2.2.17 /index.php?s=/home/main/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000998s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001995s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001995s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001995s ]
+NOTIC: [8] Undefined index: mid E:\wamp\www\Application\Home\Controller\FrontController.class.php 第 61 行.
+NOTIC: [8] Undefined index: year E:\wamp\www\Application\Home\Controller\MainController.class.php 第 16 行.
+NOTIC: [8] Undefined index: month E:\wamp\www\Application\Home\Controller\MainController.class.php 第 17 行.
+SQL: SHOW COLUMNS FROM `report_report` [ RunTime:0.0120s ]
+NOTIC: [8] Undefined index: reportname E:\wamp\www\Application\Home\Model\ReportModel.class.php 第 13 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `report_report` WHERE `u_id` = 2 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `report_report` WHERE `u_id` = 2 ORDER BY month LIMIT 0,10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(Application/Home/View/Main/console_footer.html): failed to open stream: No such file or directory E:\wamp\www\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000997s ]
+NOTIC: [8] Undefined variable: other_script E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 13 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+NOTIC: [8] Undefined variable: curr_season E:\wamp\www\Application\Runtime\Cache\Home\e66f279ca0f533de0add8e999d45677c.php 第 61 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.097765s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.097765s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001995s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001995s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000997s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001995s ]
+

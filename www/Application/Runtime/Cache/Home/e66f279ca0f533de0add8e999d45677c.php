@@ -20,7 +20,7 @@
 					    	<a href="#home" aria-controls="home" role="tab" data-toggle="tab" id="ALL">全部</a>
 					    </li>
 					    <li role="presentation">
-					    	<a href="#home" aria-controls="home" role="tab" data-toggle="tab" id="ZCFZ">资产负载表</a>
+					    	<a href="#home" aria-controls="home" role="tab" data-toggle="tab" id="ZCFZ">资产负债表</a>
 					    </li>
 					    <li role="presentation">
 					    	<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" id="LR">利润表</a>
@@ -66,7 +66,7 @@
 				<?php if(is_array($report_list)): $i = 0; $__LIST__ = $report_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="list-group-item">
 						<a href="<?php echo U('main/download',array('id'=>$vo['id']));?>" class="badge" target="_blank">下载</a>
 				    	<a href="<?php echo U('main/reportdel',array('id'=>$vo['id']));?>" class="badge">删除</a>
-				    	<a href="<?php echo U('main/checkExcel',array('id'=>$vo['id']));?>" class="badge">查看</a>
+				    	<a  class="badge" id="check" path="<?php echo ($vo['id']); ?>">查看</a>
 				    		<?php echo ($vo["year"]); ?>年<?php echo ($vo["month"]); ?>月<?php echo ($vo["reportname"]); ?>(<?php echo ($vo["frequentness"]); ?>)
 				  	</li><?php endforeach; endif; else: echo "" ;endif; ?>				
 				<ul class="pagination">
@@ -123,8 +123,14 @@
 
 <script type="text/javascript">
 $(function(){
+	$('a[path]').click(function(){
+		if(window.location.href.indexOf('change')>0)
+			window.location.href = window.location.href.split('?')[0]+'?s=/home/main/checkexcel&id='+$(this).attr('path')+'&backpath='+window.location.href.split('.html')[0]+'&report='+$('.active').children()[0].id+'&year='+$('#year').val()+'&month='+$('#season').val();
+		else
+			window.location.href = window.location.href.split('?')[0]+'?s=/home/main/checkexcel&id='+$(this).attr('path')+'&backpath='+window.location.href.split('.html')[0];
+	});
 	$('#backurl').val(window.location.href);
-	$('a').click(function (e) {
+	$('a[role]').click(function (e) {
 	 	window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+e.currentTarget.id+'&year='+$('#year').val()+'&month='+$('#season').val();
 	});
 	if(window.location.href.indexOf('&')>-1&&window.location.href.indexOf('report=')>-1)

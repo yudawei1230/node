@@ -29,18 +29,12 @@ class MainController extends FrontController {
 			for ($i=1; $i<=5; $i++) { 
 				$year[]= $curr_year-$i;
 			}
-			$season = [["全部",'ALL'],["一月",'01'],["二月",'02'],["三月",'03'],["四月",'04'],["五月",'05'],["六月",'06'],["七月",'07'],["八月",'08'],["九月",'09'],["十月",'10'],["十一月",'11'],["十二月",'12']];
+			$season = array(array("全部",'ALL'),array("一月",'01'),array("二月",'02'),array("三月",'03'),array("四月",'04'),array("五月",'05'),array("六月",'06'),array("七月",'07'),array("八月",'08'),array("九月",'09'),array("十月",'10'),array("十一月",'11'),array("十二月",'12'));
 			$this->assign('season',$season);	
 			if($map['year'] == ''){
 				$this->assign('curr_year',$curr_year);				
 			}else{
 				$this->assign('curr_year',$map['year']);				
-			}
-
-			if($map['month'] == ''){
-				$this->assign('curr_month',$curr_month);				
-			}else{
-				$this->assign('curr_month',$map['month']);				
 			}
 			for($i=0;$i<count($re['data_list']);$i++)
 			{
@@ -138,7 +132,6 @@ class MainController extends FrontController {
     // EXCEL页面初始化
     public function report(){
     	$map['year'] = $_GET['year'];
-    	$map['month'] = $_GET['month'];
     	$report_db = D('Report');
     	$re = $report_db->getList($map,$this->user['id']);
     	$set = M('User_set')->where(array('u_id'=>$this->user['id']))->find();
@@ -149,12 +142,6 @@ class MainController extends FrontController {
 			$this->assign('curr_year',$curr_year);				
 		}else{
 			$this->assign('curr_year',$map['year']);				
-		}
-
-		if($map['month'] == ''){
-			$this->assign('curr_month',$curr_month);				
-		}else{
-			$this->assign('curr_month',$map['month']);				
 		}
 		for($i=0;$i<count($re['data_list']);$i++)
 		{
@@ -178,9 +165,6 @@ class MainController extends FrontController {
 			}
 
 		}
-    	$this->assign('report_list',$re['data_list']);
-    	$this->assign('page',$re['page_list']);
-
 		/** PHPExcel_IOFactory */
 		vendor('PHPExcel.PHPExcel.IOFactory');
 		// Check prerequisites
@@ -244,7 +228,6 @@ class MainController extends FrontController {
 			$year[]= $curr_year-$i;
 		} 
 		$this->assign('curr_year',$curr_year);
-		$this->assign('curr_month',$curr_month);
 		$this->assign('year',$year);
 		if (!file_exists('./upload/'.$info['table']['savepath'].$set['institutioncode']))
 			mkdir('./upload/'.$info['table']['savepath'].$set['institutioncode']);
@@ -283,30 +266,28 @@ class MainController extends FrontController {
     	unset($_POST['day']);
     	$frequent = ($_POST['frequent']);
     	unset($_POST['frequent']);
-    	$isDel = $_POST['isDel'];
+		$isDel = ($_POST['isDel']);
     	unset($_POST['isDel']);
     	$zip_month = $month;
     	$Excelpath = $_POST['path'];
     	$reportName = $_POST['reportName'];
     	$set = M('User_set')->where(array('u_id'=>$this->user['id']))->find();
-    	if(isDel!='1')
-    		$rename = explode('-',explode('/', $Excelpath)[4])[3];
-    	else
-    		$rename = explode('-', $Excelpath);
-    	$count = 0;
+    	$rename = explode('-',explode('/', $Excelpath)[4])[3];
+		if(!file_exists('./upload/'.date('Y-m-d')))
+		{
+			mkdir('./upload/'.date('Y-m-d'));
+			if(!file_exists('./upload/'.date('Y-m-d').'/'.$set['institutioncode']))
+				mkdir('./upload/'.date('Y-m-d').'/'.$set['institutioncode']);
+		}	
     	if($frequent == '0'&& ($reportName == '人行资产负债表'||$reportName == "人行利润表"))
     	{
-    		while(file_exists($Excelpath,'./upload/'.date('Y-m-d').'/'.$set['institutioncode'].'/'.$year."-".$month."-".'max'.$set['institutioncode'].$count."-".$rename))
-    			$count++;
-    		rename($Excelpath,'./upload/'.date('Y-m-d').'/'.$set['institutioncode'].'/'.$year."-".$month."-".'max'.$set['institutioncode'].$count."-".$rename);
-    		$Excelpath = './upload/'.date('Y-m-d').'/'.$set['institutioncode'].'/'.$year."-".$month."-".'max'.$set['institutioncode'].$count."-".$rename;
+    		rename($Excelpath,'./upload/'.date('Y-m-d').'/'.$set['institutioncode'].'/'.$year."-".$month."-".'max'.$set['institutioncode']."-".$rename);
+    		$Excelpath = './upload/'.date('Y-m-d').'/'.$set['institutioncode'].'/'.$year."-".$month."-".'max'.$set['institutioncode']."-".$rename;
     	}
     	else
     	{
-    		while(file_exists($Excelpath,'./upload/'.date('Y-m-d').'/'.$set['institutioncode'].'/'.$year."-".$month."-".$set['institutioncode'].$count."-".$rename))
-    			$count++;
-	    	rename($Excelpath,'./upload/'.date('Y-m-d').'/'.$set['institutioncode'].'/'.$year."-".$month."-".$set['institutioncode'].$count."-".$rename);
-    		$Excelpath = './upload/'.date('Y-m-d').'/'.$set['institutioncode'].'/'.$year."-".$month."-".$set['institutioncode'].$count."-".$rename;
+	    	rename($Excelpath,'./upload/'.date('Y-m-d').'/'.$set['institutioncode'].'/'.$year."-".$month."-".$set['institutioncode']."-".$rename);
+    		$Excelpath = './upload/'.date('Y-m-d').'/'.$set['institutioncode'].'/'.$year."-".$month."-".$set['institutioncode']."-".$rename;
     	}
     	switch($reportName)
     	{
@@ -459,10 +440,7 @@ class MainController extends FrontController {
 			echo json_encode(array(
 				'err'=>0,
 				'exsitPf' =>$exsitPf,
-				'data' =>$data,
-				'row' =>$row,
-				'datacol'=>$datacol2,
-				'col' =>$g
+				'Excelpath' =>$Excelpath
 			),true);
 		}
 
@@ -627,31 +605,19 @@ class MainController extends FrontController {
     }
     //EXCEL查看及更改操作
     public function checkExcel(){
-    	$id = abs($_GET['id']);
+    	$id = $_GET['id'];
+    	$backpath = $_GET['backpath'];
     	$report = M('report')->find($id);
     	$set = M('User_set')->where(array('u_id'=>$this->user['id']))->find();
     	$tmp_path = $report['path'];
     	$date = explode('/', $tmp_path)[0];
-    	$count = 0;
     	if($report['frequentness']=="0"&&($report['reportname']=='ZCFZ'||$report['reportname']=='LR'))
     		$day = 'max';
     	else
     		$day = '';
-    	if(file_exists('./upload/'.$date.'/'.$set['institutioncode'].'/'.$report['year'].'-'.$report['month'].'-'.$day.$set['institutioncode'].$count.'-'.$report['reportname'].'.xls'))
-    	while(file_exists('./upload/'.$date.'/'.$set['institutioncode'].'/'.$report['year'].'-'.$report['month'].'-'.$day.$set['institutioncode'].$count.'-'.$report['reportname'].'.xls'))
-    	{
-    		$count++;
-    		if(file_exists('./upload/'.$date.'/'.$set['institutioncode'].'/'.$report['year'].'-'.$report['month'].'-'.$day.$set['institutioncode'].$count.'-'.$report['reportname'].'.xls'))
-    			continue;
-    		else
-    		{
-    			$count--;
-    			break;
-    		}
-    	}
-    	else
-    		alert('./upload/'.$date.'/'.$set['institutioncode'].'/'.$report['year'].'-'.$report['month'].'-'.$day.$set['institutioncode'].$count.'-'.$report['reportname'].'.xls'.'数据文件异常，无法查看，请重新上传','Main/index');
-    	$excelPath = './upload/'.$date.'/'.$set['institutioncode'].'/'.$report['year'].'-'.$report['month'].'-'.$day.$set['institutioncode'].$count.'-'.$report['reportname'].'.xls';
+    	if(!file_exists('./upload/'.$date.'/'.$set['institutioncode'].'/'.$report['year'].'-'.$report['month'].'-'.$day.$set['institutioncode'].'-'.$report['reportname'].'.xls'))
+    		alert('./upload/'.$date.'/'.$set['institutioncode'].'/'.$report['year'].'-'.$report['month'].'-'.$day.$set['institutioncode'].'-'.$report['reportname'].'.xls'.'数据文件异常，无法查看，请重新上传','Main/index');
+    	$excelPath = './upload/'.$date.'/'.$set['institutioncode'].'/'.$report['year'].'-'.$report['month'].'-'.$day.$set['institutioncode'].'-'.$report['reportname'].'.xls';
     			/** PHPExcel_IOFactory */
 		vendor('PHPExcel.PHPExcel.IOFactory');		 
 		$reader = \PHPExcel_IOFactory::createReader('Excel5'); //设置以Excel5格式(Excel97-2003工作簿)
@@ -711,7 +677,10 @@ class MainController extends FrontController {
 		$this->assign('id',$id);
 		//@unlink(realpath($file_path));
 		$this->assign('table_val',$table_val);
-		$this->assign('backpath',"/index.php?s=/home/main/index.html");
+		if($_GET['report']!=""&&$_GET['year']!=""&&$_GET['month']!="")
+			$this->assign('backpath',$backpath.'.html&report='.$_GET['report'].'&year='.$_GET['year'].'&month='.$_GET['month']);
+		else
+			$this->assign('backpath',"/index.php?s=/home/main/index.html");
 		$this->display('main/report');
 
     }

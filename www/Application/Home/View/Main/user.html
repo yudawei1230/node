@@ -28,7 +28,7 @@
 					<li class="list-group-item">
 						<a href="{:U('main/download',array('id'=>$vo['id']))}" class="badge" target="_blank">下载</a>
 				    	<a href="{:U('main/reportdel',array('id'=>$vo['id']))}" class="badge">删除</a>
-				    	<a href="{:U('main/checkExcel',array('id'=>$vo['id']))}" class="badge">查看</a>
+				    	<a  class="badge" id="check" path="{$vo['id']}">查看</a>
 				    		{$vo.year}年{$vo.month}月{$vo.reportname}({$vo.frequentness})
 				  	</li>
 			  	</volist>				
@@ -86,8 +86,18 @@
 <include file="Main:console_footer" />
 <script type="text/javascript">
 $(function(){
+	//点击查看修改操作
+	$('a[path]').click(function(){
+		//记录当前URL并传递参数 change还是初始
+		if(window.location.href.indexOf('change')>0)
+			window.location.href = window.location.href.split('?')[0]+'?s=/home/main/checkexcel&id='+$(this).attr('path')+'&backpath='+window.location.href.split('.html')[0]+'&report='+$('.active').children()[0].id+'&year='+$('#year').val()+'&month='+$('#season').val();
+		else
+			window.location.href = window.location.href.split('?')[0]+'?s=/home/main/checkexcel&id='+$(this).attr('path')+'&backpath='+window.location.href.split('.html')[0];
+	});
+	//记录URL于上传操作
 	$('#backurl').val(window.location.href);
-	$('a').click(function (e) {
+	//报表筛选操作
+	$('a[role]').click(function (e) {
 	 	window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+e.currentTarget.id+'&year='+$('#year').val()+'&month='+$('#season').val();
 	});
 	if(window.location.href.indexOf('&')>-1&&window.location.href.indexOf('report=')>-1)
@@ -95,9 +105,11 @@ $(function(){
 		$('#ALL').parent().removeClass("active");
 		$('#'+window.location.href.split('=')[2].split('&')[0]).parent().addClass("active");
 	}
+	//季度&月份筛选
 	$('#season').change(function(){
 		window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+$('.active').children()[0].id+'&year='+$('#year').val()+'&month='+$('#season').val();
 	});
+	//年份筛选
 	$('#year').change(function(){
 		window.location.href = window.location.href.split("?")[0]+'?s=/home/main/changereport.html&report='+$('.active').children()[0].id+'&year='+$('#year').val()+'&month='+$('#season').val();
 	});

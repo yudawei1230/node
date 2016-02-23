@@ -19,7 +19,7 @@
 					    	<a href="#home" aria-controls="home" role="tab" data-toggle="tab" id="ALL">全部</a>
 					    </li>
 					    <li role="presentation">
-					    	<a href="#home" aria-controls="home" role="tab" data-toggle="tab" id="ZCFZ">资产负载表</a>
+					    	<a href="#home" aria-controls="home" role="tab" data-toggle="tab" id="ZCFZ">资产负债表</a>
 					    </li>
 					    <li role="presentation">
 					    	<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" id="LR">利润表</a>
@@ -137,17 +137,18 @@
 <script type="text/javascript">
 $(function(){
 	var data = {};
-	var isDel = 0;
+	var call = 0;
+	//返回地址跳转
 	$('#back').click(function(){
 		window.location.href=$('#back').attr('path');
 	});
+	//上传及覆盖，更改操作
 	$("button[action='save']").click(function(){
-		if($("button[action='save']").attr('isDel')!="")
-		{
-			isDel = 1;
-			$.get('<?php echo U('main/checkDel');?>',{id:$("button[action='save']").attr('isDel')},function(data){
-			});
-		}
+		//防止多次点击上传操作
+		if(call!=0)
+			return;
+		call++;
+		//页面表格数据读取
 		var tr_obj = $('#table_list').find('tr');
 		tr_obj.each(function(i){
 			var code = tr_obj.eq(i).find('td').eq(1).html();
@@ -158,11 +159,12 @@ $(function(){
 				data[i] = code+'*'+prices;
 			}
 		})
-		data['isDel'] = isDel;
+		//其他数据获取
 		data['year'] = $('#year1').val();
 		data['reportName'] = $('#reportName').text();
 		data['frequent'] = $('#frequent').val();
 		data['path'] = $('#path').attr('path');
+		//根据不同季度不同报表设置月份及日期
 		if($('#frequent').val()==0)
 		{
 			if($('#reportName').text()!="人行利润表")
@@ -198,18 +200,42 @@ $(function(){
 				data['day'] = new Date($('#year1').val(),$('#frequent').val(),0).getDate();
 			}
 		}
-		$.post('<?php echo U('main/editreport');?>',data,function(e){
-			if(e.err == 0){
-				if(e.exsitPf)
-					alert("此月报表已存在，压缩包生成成功，覆盖成功");
-				else
-					alert('转换成功，压缩包生成成功');
-				window.location.href='<?php echo U("main/index");?>';
-			}else{
-				window.location.href='<?php echo U("main/index");?>';
-				alert(e.msg);
-			}
+		//更改报表，删除旧ZIP文件
+		if($("button[action='save']").attr('isDel')!="")
+		{
+			data['isDel'] = '1';
+			$.get('<?php echo U('main/checkDel');?>',{id:$("button[action='save']").attr('isDel')},function(e){
+				$.post('<?php echo U('main/editreport');?>',data,function(e){
+					if(e.err == 0){
+							alert('更改成功');
+					}else{
+						alert(e.msg);
+				}
+					if($('#back').attr('path')!="")
+						window.location.href = $('#back').attr('path');
+					else 
+						window.location.href='<?php echo U("main/index");?>';
 		},'json');
-	})
+			});
+		}
+		else{
+			//新增报表
+			data['isDel'] = '0';
+			$.post('<?php echo U('main/editreport');?>',data,function(e){
+					if(e.err == 0){
+						if(e.exsitPf)
+							alert("此月报表已存在，压缩包生成成功，覆盖成功");
+						else
+							alert('转换成功，压缩包生成成功');
+					}else{
+						alert(e.msg);
+				}
+					if($('#back').attr('path')!="")
+						window.location.href = $('#back').attr('path');
+					else 
+						window.location.href='<?php echo U("main/index");?>';
+		},'json');
+		}
+	});
 })
 </script>

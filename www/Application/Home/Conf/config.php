@@ -1,7 +1,7 @@
 <?php
 return array(
 	//数据组配置
-    'DB_TYPE'                   =>  'mysql',
+    'DB_TYPE'                   =>  'mysqli',
     'DB_HOST'                   =>  'localhost',
     'DB_NAME'                   =>  'xedreport',
     'DB_USER'                   =>  'root',
